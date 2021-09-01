@@ -3,8 +3,13 @@
 
 [Script]
 mcdonalds_token.js = type=http-request,pattern=^https:\/\/mcdapi\.mcddailyapp\.com\.tw\/McDonaldAPI\/member\/updateRegisterInfo$,script-path=https://kinta.ma/surge/scripts/mcdonalds_token.js,script-update-interval=-1
-cron "2 10 * * *" script-path=https://kinta.ma/surge/scripts/mcdonalds_checkin.js, wake-system=1, timeout=30
-cron "3 10 * * *" script-path=https://kinta.ma/surge/scripts/mcdonalds_luckydraw.js, wake-system=1, timeout=30
+cron "5 10 * * *" script-path=https://kinta.ma/surge/scripts/mcdonalds_checkin.js, wake-system=1, timeout=30
+cron "8 10 * * *" script-path=https://kinta.ma/surge/scripts/mcdonalds_luckydraw.js, wake-system=1, timeout=30
+cron "17 11 * * *" script-path=https://kinta.ma/surge/scripts/mcdonalds_checkin.js, wake-system=1, timeout=30
+cron "20 11 * * *" script-path=https://kinta.ma/surge/scripts/mcdonalds_luckydraw.js, wake-system=1, timeout=30
+cron "30 12 * * *" script-path=https://kinta.ma/surge/scripts/mcdonalds_checkin.js, wake-system=1, timeout=30
+cron "33 12 * * *" script-path=https://kinta.ma/surge/scripts/mcdonalds_luckydraw.js, wake-system=1, timeout=30
+
 
 [MITM]
 hostname = %APPEND% mcdapi.mcddailyapp.com.tw
