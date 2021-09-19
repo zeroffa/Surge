@@ -1,0 +1,9 @@
+#!name=Apple Updata Server Ban
+#!desc=阻擋蘋果伺服器升級 v20210919
+#!system=ios
+
+[Rule]
+#!
+DOMAIN-SUFFIX,mesu.apple.com,REJECT
+DOMAIN-SUFFIX,updates-http.cdn-apple.com,REJECT
+DOMAIN-SUFFIX,gdmf.apple.com,REJECT
