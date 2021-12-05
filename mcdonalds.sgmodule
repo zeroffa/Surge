@@ -1,15 +1,15 @@
 #!name=麥當勞自動簽到
-#!desc=每天早上自動簽到 & 參加活動。第一次使用先去個人資料那邊按修改，但什麼都不要改，直接儲存就可以獲得 token。 v20211014
+#!desc=每天早上自動簽到 & 參加活動。第一次使用先去個人資料那邊按修改，但什麼都不要改，直接儲存就可以獲得 token。 v20211205
 
 [Script]
 mcdonalds_token.js = type=http-request,pattern=^https:\/\/mcdapi\.mcddailyapp\.com\.tw\/McDonaldAPI\/member\/updateRegisterInfo$,script-path=https://kinta.ma/surge/scripts/mcdonalds_token.js,script-update-interval=-1
 mcdonalds_set_token.js = script-path=https://kinta.ma/surge/scripts/mcdonalds_set_token.js,script-update-interval=-1
 cron "5 9 * * *" script-path=https://kinta.ma/surge/scripts/mcdonalds_checkin.js, wake-system=1, timeout=30
 cron "8 9 * * *" script-path=https://kinta.ma/surge/scripts/mcdonalds_luckydraw.js, wake-system=1, timeout=30
-cron "8 9 * * 3,6" script-path=https://kinta.ma/surge/scripts/mcdonalds_mediacheckin.js, wake-system=1, timeout=30
-cron "8 10 * * *" script-path=https://kinta.ma/surge/scripts/mcdonalds_checkin.js, wake-system=1, timeout=30
-cron "10 10 * * *" script-path=https://kinta.ma/surge/scripts/mcdonalds_luckydraw.js, wake-system=1, timeout=30
-cron "12 10 * * 3,6" script-path=https://kinta.ma/surge/scripts/mcdonalds_mediacheckin.js, wake-system=1, timeout=30
+cron "5 9 * * 3,6" script-path=https://kinta.ma/surge/scripts/mcdonalds_mediacheckin.js, wake-system=1, timeout=30
+cron "7 10 * * *" script-path=https://kinta.ma/surge/scripts/mcdonalds_checkin.js, wake-system=1, timeout=30
+cron "11 10 * * *" script-path=https://kinta.ma/surge/scripts/mcdonalds_luckydraw.js, wake-system=1, timeout=30
+cron "13 10 * * 3,6" script-path=https://kinta.ma/surge/scripts/mcdonalds_mediacheckin.js, wake-system=1, timeout=30
 
 [MITM]
 hostname = %APPEND% mcdapi.mcddailyapp.com.tw
