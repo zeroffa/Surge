@@ -2,5 +2,5 @@
 #!desc=每天自動滴水打卡與自動做任務。需要同時開啟一般自動簽到模組才會生效。 v20220220
 
 [Script]
-cron "10 0,4,8 * * *" script-path=https://kinta.ma/surge/scripts/shopee_water_checkin.js, wake-system=1, timeout=5
+cron "10 9,13,17 * * *" script-path=https://kinta.ma/surge/scripts/shopee_water_checkin.js, wake-system=1, timeout=5
 cron "8 4 * * *" script-path=https://kinta.ma/surge/scripts/shopee_water_mission.js, wake-system=1, timeout=60
