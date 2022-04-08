@@ -1,13 +1,13 @@
-#!name=蝦皮每日自動簽到 & 開寶箱
-#!desc=每天早上自動簽到 & 開蝦幣寶箱 & 開免運寶箱。第一次使用前先到「我的」→「邀請我的朋友」取得 token。 v20220303
+#!name=蝦皮每日自動簽到
+#!desc=每天早上自動簽到 + 開蝦幣寶箱 + 開免運寶箱。第一次使用前先到「我的」→「邀請我的朋友」取得 token。 v20220328
 
 [Script]
-cron "10 9 * * *" script-path=https://kinta.ma/surge/scripts/shopee_checkin.js, wake-system=1, timeout=5
-cron "12 9 * * *" script-path=https://kinta.ma/surge/scripts/shopee_coin_lucky_draw.js, wake-system=1, timeout=10
-cron "12 9 * * *" script-path=https://kinta.ma/surge/scripts/shopee_shipping_lucky_draw.js, wake-system=1, timeout=10
-cron "8 10 * * *" script-path=https://kinta.ma/surge/scripts/shopee_checkin.js, wake-system=1, timeout=5
-cron "10 10 * * *" script-path=https://kinta.ma/surge/scripts/shopee_coin_lucky_draw.js, wake-system=1, timeout=10
-cron "10 10 * * *" script-path=https://kinta.ma/surge/scripts/shopee_shipping_lucky_draw.js, wake-system=1, timeout=10
+cron "17 9 * * *" script-path=https://kinta.ma/surge/scripts/shopee_checkin.js, wake-system=1, timeout=5
+cron "18 9 * * *" script-path=https://kinta.ma/surge/scripts/shopee_coin_lucky_draw.js, wake-system=1, timeout=10
+cron "18 9 * * *" script-path=https://kinta.ma/surge/scripts/shopee_shipping_lucky_draw.js, wake-system=1, timeout=10
+cron "31 10 * * *" script-path=https://kinta.ma/surge/scripts/shopee_checkin.js, wake-system=1, timeout=5
+cron "32 10 * * *" script-path=https://kinta.ma/surge/scripts/shopee_coin_lucky_draw.js, wake-system=1, timeout=10
+cron "32 10 * * *" script-path=https://kinta.ma/surge/scripts/shopee_shipping_lucky_draw.js, wake-system=1, timeout=10
 shopee_token.js = type=http-request,pattern=^https:\/\/mall\.shopee\.tw\/api\/v4\/microsite\/campaign_site_page,script-path=https://kinta.ma/surge/scripts/shopee_token.js,script-update-interval=-1
 
 [MITM]
