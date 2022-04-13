@@ -1,11 +1,10 @@
 #!name=Books Daily Checkin
-#!desc=博客來 9、10、11點自動簽到（先正常登入 App，然後往上滑完整退出 App，再到 App 內 E-Coupon 抓取 Cookie）v20210919
+#!desc=博客來 9、10點自動簽到（先正常登入 App，然後往上滑完整退出 App，再到 App 內 E-Coupon 抓取 Cookie）v20220411
 
 [Script]
-cron "10 9 * * *" script-path=https://raw.githubusercontent.com/jkgtw/Surge/master/JS/books-checkin.js, wake-system=1, timeout=5
-cron "15 10 * * *" script-path=https://raw.githubusercontent.com/jkgtw/Surge/master/JS/books-checkin.js, wake-system=1, timeout=5
-cron "20 11 * * *" script-path=https://raw.githubusercontent.com/jkgtw/Surge/master/JS/books-checkin.js, wake-system=1, timeout=5
-books-cookie.js = type=http-request,pattern=^https:\/\/myaccount\.books\.com\.tw\/myaccount\/myaccount\/getPercentcouponlist\/$,script-path=https://raw.githubusercontent.com/jkgtw/Surge/master/JS/books-cookie.js,script-update-interval=-1
+cron "18 9 * * *" script-path=https://raw.githubusercontent.com/jkgtw/Surge/master/JS/books-checkin.js, wake-system=1, timeout=5
+cron "20 10 * * *" script-path=https://raw.githubusercontent.com/jkgtw/Surge/master/JS/books-checkin.js, wake-system=1, timeout=5
+books-cookie.js = type=http-request,pattern=^https:\/\/myaccount\.books\.com\.tw\/myaccount\/myaccount\/getPercentcouponlist$,script-path=https://raw.githubusercontent.com/jkgtw/Surge/master/JS/books-cookie.js,script-update-interval=-1
 
 [MITM]
 hostname = %APPEND% myaccount.books.com.tw
