@@ -1,12 +1,12 @@
-#!name=麥當勞自動簽到（花費積分）
-#!desc=每天早上自動簽到 + 參加活動。此版本會自動參加花費積分的活動。v20220722
+#!name=麥當勞自動簽到
+#!desc=每天早上自動簽到 + 參加活動。 v20220722
 
 [Script]
-cron "15 9 * * *" script-path=https://kinta.ma/surge/scripts/mcdonalds_checkin.js, wake-system=1, timeout=5
-cron "16 9 * * *" script-path=https://kinta.ma/surge/scripts/mcdonalds_luckydraw.js, wake-system=1, timeout=10
-cron "16 9 * * 3,6" script-path=https://kinta.ma/surge/scripts/mcdonalds_question.js, wake-system=1, timeout=10
-cron "17 9 * * 3,6" script-path=https://kinta.ma/surge/scripts/mcdonalds_media_checkin.js, wake-system=1, timeout=30
-cron "31 10 * * *" script-path=https://kinta.ma/surge/scripts/mcdonalds_checkin.js, wake-system=1, timeout=5
-cron "32 10 * * *" script-path=https://kinta.ma/surge/scripts/mcdonalds_luckydraw.js, wake-system=1, timeout=10
-cron "32 10 * * 3,6" script-path=https://kinta.ma/surge/scripts/mcdonalds_question.js, wake-system=1, timeout=10
-cron "33 10 * * 3,6" script-path=https://kinta.ma/surge/scripts/mcdonalds_media_checkin.js, wake-system=1, timeout=30
+cron "13 9 * * *" script-path=https://kinta.ma/surge/scripts/mcdonalds_checkin.js, wake-system=1, timeout=5
+cron "14 9 * * *" script-path=https://kinta.ma/surge/scripts/mcdonalds_luckydraw.js, wake-system=1, timeout=10
+cron "14 9 * * 3,6" script-path=https://kinta.ma/surge/scripts/mcdonalds_question.js, wake-system=1, timeout=10
+cron "15 9 * * 3,6" script-path=https://kinta.ma/surge/scripts/mcdonalds_media_checkin.js, wake-system=1, timeout=30
+cron "32 10 * * *" script-path=https://kinta.ma/surge/scripts/mcdonalds_checkin.js, wake-system=1, timeout=5
+cron "33 10 * * *" script-path=https://kinta.ma/surge/scripts/mcdonalds_luckydraw.js, wake-system=1, timeout=10
+cron "33 10 * * 3,6" script-path=https://kinta.ma/surge/scripts/mcdonalds_question.js, wake-system=1, timeout=10
+cron "34 10 * * 3,6" script-path=https://kinta.ma/surge/scripts/mcdonalds_media_checkin.js, wake-system=1, timeout=30
