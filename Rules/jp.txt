@@ -12,3 +12,4 @@ DOMAIN-SUFFIX,sakura-checker.jp
 DOMAIN-SUFFIX,jrepoint.jp
 DOMAIN-SUFFIX,jreast.co.jp
 DOMAIN-SUFFIX,eki-net.com
+DOMAIN-SUFFIX,mobilesuica.com
