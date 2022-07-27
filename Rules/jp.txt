@@ -7,3 +7,8 @@ DOMAIN-SUFFIX,tver.jp
 
 #! 其他
 DOMAIN-SUFFIX,sakura-checker.jp
+
+#! JR東
+DOMAIN-SUFFIX,jrepoint.jp
+DOMAIN-SUFFIX,jreast.co.jp
+DOMAIN-SUFFIX,eki-net.com
