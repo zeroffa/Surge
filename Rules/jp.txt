@@ -1,5 +1,5 @@
 #!name=JAPAN OTT IN OC ONLINE
-#!desc=使用 Oracle Cloud 日本VPS 連線v202207
+#!desc=使用 Oracle Cloud 日本 VPS 連線v202208
 
 #! Tver
 DOMAIN-SUFFIX,brightcove.com
