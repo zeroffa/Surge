@@ -23,3 +23,6 @@ DOMAIN-SUFFIX,firebase-settings.crashlytics.com
 DOMAIN,e2elog.fetnet.net
 #! FB
 DOMAIN,connect.facebook.net
+
+#! ???
+DOMAIN-SUFFIX,convection.cn
