@@ -24,5 +24,11 @@ DOMAIN,e2elog.fetnet.net
 #! FB
 DOMAIN,connect.facebook.net
 
+#! 蘋果新聞
+DOMAIN,appledaily.com.tw
+
+#! 抖音
+DOMAIN,tiktok.com
+
 #! ???
 DOMAIN-SUFFIX,convection.cn
