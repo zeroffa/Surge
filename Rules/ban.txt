@@ -32,3 +32,7 @@ DOMAIN,tiktok.com
 
 #! ???
 DOMAIN-SUFFIX,convection.cn
+
+#! 中x
+DOMAIN,ctitv.com.tw
+DOMAIN,chinatimes.com
