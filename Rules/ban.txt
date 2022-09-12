@@ -36,3 +36,7 @@ DOMAIN-SUFFIX,convection.cn
 #! 中x
 DOMAIN,ctitv.com.tw
 DOMAIN,chinatimes.com
+
+#! 蘋x 新聞
+DOMAIN,appledaily.com.tw
+DOMAIN,nextapple.com
