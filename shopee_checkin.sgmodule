@@ -5,6 +5,9 @@
 [蝦皮]每日簽到 = type=cron, cronexp="16 0 * * *", script-path=https://kinta.ma/surge/scripts/shopee_checkin.js, wake-system=1, timeout=5
 [蝦皮]蝦幣寶箱 = type=cron, cronexp="17 0 * * *", script-path=https://kinta.ma/surge/scripts/shopee_coin_lucky_draw.js, wake-system=1, timeout=10
 [蝦皮]免運寶箱 = type=cron, cronexp="17 0 * * *", script-path=https://kinta.ma/surge/scripts/shopee_shipping_lucky_draw.js, wake-system=1, timeout=10
+[蝦皮]每日簽到 = type=cron, cronexp="31 9 * * *", script-path=https://kinta.ma/surge/scripts/shopee_checkin.js, wake-system=1, timeout=5
+[蝦皮]蝦幣寶箱 = type=cron, cronexp="32 9 * * *", script-path=https://kinta.ma/surge/scripts/shopee_coin_lucky_draw.js, wake-system=1, timeout=10
+[蝦皮]免運寶箱 = type=cron, cronexp="32 9 * * *", script-path=https://kinta.ma/surge/scripts/shopee_shipping_lucky_draw.js, wake-system=1, timeout=10
 [蝦皮]取得Cookie = type=http-request, pattern=^https:\/\/mall\.shopee\.tw\/api\/v2\/user\/profile\/get\/$, script-path=https://kinta.ma/surge/scripts/shopee_token.js
 
 [MITM]
