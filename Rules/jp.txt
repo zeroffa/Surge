@@ -8,7 +8,7 @@ DOMAIN-SUFFIX,tver.jp
 #! 其他
 DOMAIN-SUFFIX,sakura-checker.jp
 
-#! JR東
+#! 日本JR
 DOMAIN-SUFFIX,jrepoint.jp
 DOMAIN-SUFFIX,jreast.co.jp
 DOMAIN-SUFFIX,eki-net.com
@@ -16,3 +16,9 @@ DOMAIN-SUFFIX,mobilesuica.com
 
 #! flightradar24 test 220801
 DOMAIN-SUFFIX,flightradar24.com
+
+#! 日本常用網站
+DOMAIN-SUFFIX,biccamera.com
+DOMAIN-SUFFIX,paypay.ne.jp
+DOMAIN-SUFFIX,aeonpayment.com
+DOMAIN-SUFFIX,yodobashi.com
