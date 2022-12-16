@@ -22,3 +22,4 @@ DOMAIN-SUFFIX,biccamera.com
 DOMAIN-SUFFIX,paypay.ne.jp
 DOMAIN-SUFFIX,aeonpayment.com
 DOMAIN-SUFFIX,yodobashi.com
+DOMAIN-SUFFIX,waon.com
