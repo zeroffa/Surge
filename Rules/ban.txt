@@ -20,7 +20,7 @@ DOMAIN-SUFFIX,shopee.cn
 DOMAIN-SUFFIX,firebase-settings.crashlytics.com
 
 #! 遠傳log?
-DOMAIN,e2elog.fetnet.net
+#!DOMAIN,e2elog.fetnet.net
 #! FB
 DOMAIN,connect.facebook.net
 
