@@ -1,12 +1,10 @@
 #!name=麥當勞自動簽到 v2（花費積分）
-#!desc=每天早上自動簽到 + 參加活動。此版本會自動參加花費積分的活動。 v20220807
+#!desc=每天早上自動簽到 + 參加活動。此版本會自動參加花費積分的活動。 v20230125
 
 [Script]
-cron "15 9 * * *" script-path=https://kinta.ma/surge/blackmagic/scripts/mcdonalds_checkin_v2.js, wake-system=1, timeout=5
-cron "16 9 * * *" script-path=https://kinta.ma/surge/blackmagic/scripts/mcdonalds_luckydraw_v2.js, wake-system=1, timeout=10
-cron "16 9 * * 3,6" script-path=https://kinta.ma/surge/blackmagic/scripts/mcdonalds_question_v2.js, wake-system=1, timeout=10
-cron "17 9 * * 3,6" script-path=https://kinta.ma/surge/blackmagic/scripts/mcdonalds_media_checkin_v2.js, wake-system=1, timeout=30
-cron "31 10 * * *" script-path=https://kinta.ma/surge/blackmagic/scripts/mcdonalds_checkin_v2.js, wake-system=1, timeout=5
-cron "32 10 * * *" script-path=https://kinta.ma/surge/blackmagic/scripts/mcdonalds_luckydraw_v2.js, wake-system=1, timeout=10
-cron "32 10 * * 3,6" script-path=https://kinta.ma/surge/blackmagic/scripts/mcdonalds_question_v2.js, wake-system=1, timeout=10
-cron "33 10 * * 3,6" script-path=https://kinta.ma/surge/blackmagic/scripts/mcdonalds_media_checkin_v2.js, wake-system=1, timeout=30
+[麥當勞]每日簽到 = type=cron, cronexp="13 0 * * *", script-path=https://kinta.ma/surge/blackmagic/scripts/mcdonalds_checkin_v2.js, wake-system=1, timeout=5
+[麥當勞]每日任務 = type=cron, cronexp="14 0 * * *", script-path=https://kinta.ma/surge/blackmagic/scripts/mcdonalds_luckydraw_v2.js, wake-system=1, timeout=10
+[麥當勞]看片賺分 = type=cron, cronexp="15 0 * * 3,6", script-path=https://kinta.ma/surge/blackmagic/scripts/mcdonalds_media_checkin_v2.js, wake-system=1, timeout=30
+[麥當勞]每日簽到 = type=cron, cronexp="13 9 * * *", script-path=https://kinta.ma/surge/blackmagic/scripts/mcdonalds_checkin_v2.js, wake-system=1, timeout=5
+[麥當勞]每日任務 = type=cron, cronexp="14 9 * * *", script-path=https://kinta.ma/surge/blackmagic/scripts/mcdonalds_luckydraw_v2.js, wake-system=1, timeout=10
+[麥當勞]看片賺分 = type=cron, cronexp="15 9 * * 3,6", script-path=https://kinta.ma/surge/blackmagic/scripts/mcdonalds_media_checkin_v2.js, wake-system=1, timeout=30
