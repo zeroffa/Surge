@@ -22,21 +22,25 @@ DOMAIN-SUFFIX,firebase-settings.crashlytics.com
 #! 遠傳log?
 #!DOMAIN,e2elog.fetnet.net
 #! FB
-DOMAIN,connect.facebook.net
+DOMAIN-SUFFIX,connect.facebook.net
 
 #! 蘋果新聞
-DOMAIN,appledaily.com.tw
+DOMAIN-SUFFIX,appledaily.com.tw
 
 #! 抖音
-DOMAIN,tiktok.com
+DOMAIN-SUFFIX,tiktok.com
 
 #! ???
 DOMAIN-SUFFIX,convection.cn
 
 #! 中x
-DOMAIN,ctitv.com.tw
-DOMAIN,chinatimes.com
+DOMAIN-SUFFIX,ctitv.com.tw
+DOMAIN-SUFFIX,chinatimes.com
 
 #! 蘋x 新聞
-DOMAIN,appledaily.com.tw
-DOMAIN,nextapple.com
+DOMAIN-SUFFIX,appledaily.com.tw
+DOMAIN-SUFFIX,nextapple.com
+
+#! edge 瀏覽器
+DOMAIN-SUFFIX,browser.events.data.msn.com
+DOMAIN-SUFFIX,assets.msn.com
