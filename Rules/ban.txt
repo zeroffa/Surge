@@ -44,3 +44,5 @@ DOMAIN-SUFFIX,nextapple.com
 #! edge 瀏覽器
 DOMAIN-SUFFIX,browser.events.data.msn.com
 DOMAIN-SUFFIX,assets.msn.com
+DOMAIN-SUFFIX,msedge.api.cdp.microsoft.com
+DOMAIN-SUFFIX,dl.delivery.mp.microsoft.com
