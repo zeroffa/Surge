@@ -46,3 +46,22 @@ DOMAIN-SUFFIX,browser.events.data.msn.com
 DOMAIN-SUFFIX,assets.msn.com
 DOMAIN-SUFFIX,msedge.api.cdp.microsoft.com
 DOMAIN-SUFFIX,dl.delivery.mp.microsoft.com
+
+#! 其他
+DOMAIN-SUFFIX,ads-api.twitter.com
+DOMAIN-SUFFIX,ads.pinterest.com
+DOMAIN-SUFFIX,udc.yahoo.com
+DOMAIN-SUFFIX,udcm.yahoo.com
+DOMAIN-SUFFIX,widgets.pinterest.com
+DOMAIN-SUFFIX,appmetrica.yandex.ru
+DOMAIN-SUFFIX,ck.ads.oppomobile.com
+DOMAIN-SUFFIX,appmetrica.yandex.ru
+DOMAIN-SUFFIX,an.facebook.com
+DOMAIN-SUFFIX,app.getsentry.com
+DOMAIN-SUFFIX,browser.sentry-cdn.com
+DOMAIN-SUFFIX,app.bugsnag.com
+DOMAIN-SUFFIX,api.bugsnag.com
+DOMAIN-SUFFIX,notify.bugsnag.com
+DOMAIN-SUFFIX,advice-ads.s3.amazonaws.com
+DOMAIN-SUFFIX,adtago.s3.amazonaws.com
+
