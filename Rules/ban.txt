@@ -1,5 +1,5 @@
 #!name=BAN SITE LISTS
-#!desc=禁止連線網站列表 v202306.1
+#!desc=禁止連線網站列表 v202308.1
 
 #! line
 #! DOMAIN-SUFFIX,lan.line.me
