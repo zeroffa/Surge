@@ -5,6 +5,8 @@
 #! DOMAIN-SUFFIX,lan.line.me
 DOMAIN-SUFFIX,crs-event.line.me
 DOMAIN-SUFFIX,profile.line-scdn.net
+DOMAIN-SUFFIX,search.line.me
+
 #! 其他
 DOMAIN-SUFFIX,appcenter.ms
 DOMAIN-SUFFIX,z7.web.core.windows.net
@@ -46,6 +48,9 @@ DOMAIN-SUFFIX,browser.events.data.msn.com
 DOMAIN-SUFFIX,assets.msn.com
 DOMAIN-SUFFIX,msedge.api.cdp.microsoft.com
 DOMAIN-SUFFIX,dl.delivery.mp.microsoft.com
+
+#! MOMO
+DOMAIN-SUFFIX,livestream-source.momoshop.com.tw
 
 #! 其他
 DOMAIN-SUFFIX,ads-api.twitter.com
