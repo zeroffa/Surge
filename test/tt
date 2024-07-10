@@ -822,3 +822,7 @@ SBS 동상이몽2 - 너는 내 운명,https://d303zg8wpbocww.cloudfront.net/v1/m
 SBS 清州放送,http://1.222.207.80:1935/live/cjbtv/chunklist_w1357270949.m3u8
 SBS 清州放送,http://1.222.207.80:1935/live/cjbtv/playlist.m3u8
 ##
+
+#EXTINF:-1 group-title="TEST",非凡新聞
+#EXTVLCOPT:http-referrer=https://fetfriday.svc.litv.tv/
+https://aka03p.akamaized.net/litv/fet001.smil/playlist.m3u8
