@@ -1,5 +1,5 @@
-{"list": "https://anenasa.github.io/channel/config.txt"}
 {
+"list": "https://anenasa.github.io/channel/config.txt",
   "channelList": [
     {
       "url": "https://www.ofiii.com/channel/watch/4gtv-4gtv066",
