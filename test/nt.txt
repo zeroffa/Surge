@@ -29,16 +29,12 @@
       "name": "亞洲旅遊台"
     },
     {
-      "url": "https://www.ofiii.com/channel/watch/litv-longturn19",
-      "name": "Smart知識台"
-    },
-    {
       "url": "https://www.ofiii.com/channel/watch/litv-longturn12",
       "name": "龍華偶像"
     },
     {
       "url": "https://www.ofiii.com/channel/watch/litv-longturn11",
-      "name": "龍華日劇"
+      "name": "龍華日韓"
     },
     {
       "url": "https://www.ofiii.com/channel/watch/litv-longturn18",
@@ -59,6 +55,10 @@
     {
       "url": "https://www.ofiii.com/channel/watch/litv-longturn22",
       "name": "台灣戲劇"
+    },
+    {
+      "url": "https://www.ofiii.com/channel/watch/litv-longturn19",
+      "name": "Smart知識台"
     },
     {
       "url": "https://www.ofiii.com/channel/watch/4gtv-4gtv102",
@@ -84,14 +84,14 @@
       "url": "https://www.youtube.com/watch?v=wM0g8EoUZ_E",
       "name": "華視新聞"
     },
-    {
-      "url": "https://www.youtube.com/watch?v=V1p33hqPrUk",
-      "name": "東森新聞"
-    },
 	{
       "url": "https://aka03p.akamaized.net/litv/fet001.smil/playlist.m3u8",
       "name": "非凡新聞",
       "header": "Referer: https://fetfriday.svc.litv.tv/"
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=V1p33hqPrUk",
+      "name": "東森新聞"
     },
     {
       "url": "https://www.youtube.com/watch?v=WHEPzbFA3hw",
@@ -125,6 +125,10 @@
       "url": "https://www.youtube.com/watch?v=m_dhMSvUCIc",
       "name": "TVBS新聞"
     },
+    {
+      "url": "https://today.line.me/tw/v2/article/jggMBa",
+      "name": "TVBS新聞 (Line)"
+    },
    {
       "url": "https://www.youtube.com/watch?v=oIgbl7t0S_w",
       "name": "中天新聞"
@@ -132,10 +136,6 @@
    {
       "url": "https://www.youtube.com/watch?v=MJFaJER4Qxo",
       "name": "中天亞洲台"
-    },
-    {
-      "url": "https://today.line.me/tw/v2/article/jggMBa",
-      "name": "TVBS新聞 (Line)"
     },
    {
       "url": "https://www.youtube.com/watch?v=iyOq8DhaMYw",
