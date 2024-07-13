@@ -18,11 +18,11 @@
     },
     {
       "url": "https://www.youtube.com/watch?v=oV_i3Hsl_zg",
-      "name": "大愛一臺"
+      "name": "大愛一"
     },
     {
       "url": "https://www.youtube.com/watch?v=DTNkEm6jaqQ",
-      "name": "大愛二臺"
+      "name": "大愛二"
     {
       "url": "https://www.ofiii.com/channel/watch/litv-longturn17",
       "name": "亞洲旅遊"
@@ -57,7 +57,7 @@
     },
     {
       "url": "https://www.ofiii.com/channel/watch/litv-longturn19",
-      "name": "Smart知識台"
+      "name": "Smart知識"
     },
     {
       "url": "https://www.ofiii.com/channel/watch/4gtv-4gtv102",
