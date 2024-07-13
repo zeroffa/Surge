@@ -1,32 +1,12 @@
 {
  "channelList": [
     {
-      "url": "https://www.4gtv.tv/channel/4gtv-4gtv002?set=4&ch=3",
-      "name": "民視"
-    },
-    {
-      "url": "https://www.4gtv.tv/channel/4gtv-4gtv003?set=4&ch=1",
-      "name": "民視第一"
-    },
-    {
-      "url": "https://www.4gtv.tv/channel/4gtv-4gtv001?set=4&ch=2",
-      "name": "民視台灣"
-    },
-    {
       "url": "https://www.ofiii.com/channel/watch/4gtv-4gtv066",
       "name": "台視"
     },
     {
       "url": "https://www.ofiii.com/channel/watch/4gtv-4gtv040",
       "name": "中視"
-    },
-    {
-      "url": "https://www.4gtv.tv/channel/4gtv-4gtv080?set=4&ch=124",
-      "name": "中視經典"
-    },
-    {
-      "url": "https://www.4gtv.tv/channel/4gtv-4gtv064?set=4&ch=123",
-      "name": "中視菁采"
     },
     {
       "url": "https://www.ofiii.com/channel/watch/4gtv-4gtv041",
@@ -37,40 +17,15 @@
       "name": "公視"
     },
     {
-      "url": "https://www.4gtv.tv/channel/4gtv-4gtv042?set=4&ch=7",
-      "name": "公視戲劇"
-    },
-    {
-      "url": "https://www.4gtv.tv/channel/4gtv-4gtv043?set=4&ch=107",
-      "name": "客家電視"
-    },
-    {
       "url": "https://www.youtube.com/watch?v=oV_i3Hsl_zg",
       "name": "大愛一臺"
     },
     {
       "url": "https://www.youtube.com/watch?v=DTNkEm6jaqQ",
       "name": "大愛二臺"
-    },
-    {
-      "url": "https://www.4gtv.tv/channel/4gtv-live207?set=4&ch=169",
-      "name": "三立綜"
-    },
-    {
-      "url": "https://www.4gtv.tv/channel/4gtv-live087?set=4&ch=284",
-      "name": "TVBS綜藝"
-    },
-    {
-      "url": "https://www.4gtv.tv/channel/4gtv-live088?set=4&ch=285",
-      "name": "TVBS台劇"
-    },
     {
       "url": "https://www.ofiii.com/channel/watch/litv-longturn17",
       "name": "亞洲旅遊"
-    },
-    {
-      "url": "https://www.4gtv.tv/channel/4gtv-live120?set=4&ch=237",
-      "name": "愛爾達生活旅遊"
     },
     {
       "url": "https://www.ofiii.com/channel/watch/litv-longturn12",
@@ -111,10 +66,6 @@
     {
       "url": "https://www.ofiii.com/channel/watch/4gtv-4gtv103",
       "name": "東森購物二"
-    },
-    {
-      "url": "https://www.4gtv.tv/channel/4gtv-live107?set=4&ch=231",
-      "name": "MOMO親子"
     },
    {
       "url": "https://www.youtube.com/watch?v=ylYJSBUgaMA",
