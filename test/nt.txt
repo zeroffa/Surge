@@ -27,6 +27,7 @@
     {
       "url": "https://www.youtube.com/watch?v=DTNkEm6jaqQ",
       "name": "大愛二"
+    },
     {
       "url": "https://www.ofiii.com/channel/watch/litv-longturn17",
       "name": "亞洲旅遊"
@@ -65,15 +66,19 @@
     },
     {
       "url": "https://www.youtube.com/watch?v=UK81GCw1KE8",
-      "name": "我們這一家"
+      "name": "卡通-我們這一家"
     },
     {
       "url": "https://www.youtube.com/watch?v=2FJcu6qsM2k",
-      "name": "中華一番"
+      "name": "卡通-中華一番"
     },
     {
       "url": "https://www.youtube.com/watch?v=_jP5o1W3eW0",
-      "name": "蠟筆小新"
+      "name": "卡通-蠟筆小新"
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=tr77RbnfYIU",
+      "name": "日本 avex music"
     },
     {
       "url": "https://www.ofiii.com/channel/watch/4gtv-4gtv102",
@@ -83,7 +88,7 @@
       "url": "https://www.ofiii.com/channel/watch/4gtv-4gtv103",
       "name": "東森購物二"
     },
-   {
+    {
       "url": "https://www.youtube.com/watch?v=ylYJSBUgaMA",
       "name": "民視新聞"
     },
@@ -95,11 +100,11 @@
       "url": "https://www.youtube.com/c/twctvnews/live",
       "name": "中視新聞"
     },
-   {
+    {
       "url": "https://www.youtube.com/watch?v=wM0g8EoUZ_E",
       "name": "華視新聞"
     },
-	{
+    {
       "url": "https://aka03p.akamaized.net/litv/fet001.smil/playlist.m3u8",
       "name": "非凡新聞",
       "header": "Referer: https://fetfriday.svc.litv.tv/"
@@ -116,7 +121,7 @@
       "url": "https://www.youtube.com/watch?v=6IquAgfvYmc",
       "name": "寰宇新聞"
     },
-	{
+    {
       "url": "https://www.ofiii.com/channel/watch/litv-longturn23",
       "name": "寰宇財經"
     },
@@ -149,10 +154,6 @@
       "name": "日本 TBS 新聞"
     },
     {
-      "url": "https://www.youtube.com/watch?v=tr77RbnfYIU",
-      "name": "日本 avex music"
-    },
-    {
       "url": "https://www.youtube.com/watch?v=e2pgLUmaxGs",
       "name": "日本 廣島 新聞"
     },
@@ -162,9 +163,9 @@
     },
     {
       "url": "https://www.youtube.com/watch?v=d8CrKBU99Hg",
-      "name": "日本 HTB北海道新聞"
+      "name": "日本 HTB 北海道新聞"
     },
-   {
+    {
       "url": "https://www.youtube.com/watch?v=m_dhMSvUCIc",
       "name": "TVBS新聞"
     },
@@ -172,11 +173,11 @@
       "url": "https://today.line.me/tw/v2/article/jggMBa",
       "name": "TVBS新聞 (Line)"
     },
-   {
+    {
       "url": "https://www.youtube.com/watch?v=oIgbl7t0S_w",
       "name": "中天新聞"
     },
-   {
+    {
       "url": "https://www.youtube.com/watch?v=MJFaJER4Qxo",
       "name": "中天亞洲台"
     },
