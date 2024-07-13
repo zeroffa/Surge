@@ -17,6 +17,10 @@
       "name": "公視"
     },
     {
+      "url": "https://www.youtube.com/watch?v=6KlRR_DGhmI",
+      "name": "公視台語"
+    },
+    {
       "url": "https://www.youtube.com/watch?v=oV_i3Hsl_zg",
       "name": "大愛一"
     },
@@ -58,6 +62,18 @@
     {
       "url": "https://www.ofiii.com/channel/watch/litv-longturn19",
       "name": "Smart知識"
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=UK81GCw1KE8",
+      "name": "我們這一家"
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=2FJcu6qsM2k",
+      "name": "中華一番"
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=_jP5o1W3eW0",
+      "name": "蠟筆小新"
     },
     {
       "url": "https://www.ofiii.com/channel/watch/4gtv-4gtv102",
@@ -118,7 +134,35 @@
     },
     {
       "url": "https://www.youtube.com/watch?v=w87VGpgd90U",
-      "name": "寰宇新聞台灣台"
+      "name": "寰宇新聞台灣"
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=coYw-eVU0Ks",
+      "name": "日本 ANN 新聞"
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=sTAqx_1Yrww",
+      "name": "日本 ABC 關西新聞"
+    },
+    {
+      "url": "https://www.youtube.com/channel/UC6AG81pAkf6Lbi_1VC5NmPA/streams",
+      "name": "日本 TBS 新聞"
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=tr77RbnfYIU",
+      "name": "日本 avex music"
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=e2pgLUmaxGs",
+      "name": "日本 廣島 新聞"
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=-C6FE2m7kX8",
+      "name": "日本 名古屋 新聞"
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=d8CrKBU99Hg",
+      "name": "日本 HTB北海道新聞"
     },
    {
       "url": "https://www.youtube.com/watch?v=m_dhMSvUCIc",
@@ -139,6 +183,6 @@
    {
       "url": "https://www.youtube.com/watch?v=iyOq8DhaMYw",
       "name": "Bloomberg Business News"
-    }
+   }
   ]
 }
