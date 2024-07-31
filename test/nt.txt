@@ -150,10 +150,6 @@
       "name": "日本 ABC 關西新聞"
     },
     {
-      "url": "https://www.youtube.com/channel/UC6AG81pAkf6Lbi_1VC5NmPA/streams",
-      "name": "日本 TBS 新聞"
-    },
-    {
       "url": "https://www.youtube.com/watch?v=e2pgLUmaxGs",
       "name": "日本 廣島 新聞"
     },
