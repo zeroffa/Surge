@@ -45,6 +45,8 @@ TVBS亞洲,http://38.64.72.148/hls/modn/list/4005/chunklist0.m3u8
 三立台灣台,https://epg.pw/stream/bfb4f28ad7b1bc3e20703b9f35b51104a59eca154ec67643bf9d30a8af4b607a.m3u8
 富士電視,https://test.zapi.us.kg/?id=fujitv
 富士電視,http://histar-proxy.isus.cc/fujitv
+非凡新聞,https://test.zapi.us.kg/?id=unique-business-news
+非凡新聞,http://23.26.147.19:1258/proxy/Smartv.php?id=feifannews_twn
 ##
 
 台灣-新聞,#genre#
