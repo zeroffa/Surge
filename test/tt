@@ -41,6 +41,10 @@ TVBS亞洲,http://38.64.72.148/hls/modn/list/4005/chunklist0.m3u8
 緯來精彩臺,http://61.221.215.25:8800/hls/48/index.m3u8
 緯來體育,rtmp://220.130.201.73/sat/tv721
 緯來體育,rtmp://f13h.mine.nu/sat/tv721
+三立台灣台,https://test.zapi.us.kg/?id=settv-taiwan
+三立台灣台,https://epg.pw/stream/bfb4f28ad7b1bc3e20703b9f35b51104a59eca154ec67643bf9d30a8af4b607a.m3u8
+富士電視,https://test.zapi.us.kg/?id=fujitv
+富士電視,http://histar-proxy.isus.cc/fujitv
 ##
 
 台灣-新聞,#genre#
