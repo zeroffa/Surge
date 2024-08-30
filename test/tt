@@ -1,4 +1,4 @@
-台灣-240827,#genre#
+台灣-240830,#genre#
 ELEVEN體育1,rtmp://f13h.mine.nu/sat/tv731
 ELEVEN體育2,rtmp://f13h.mine.nu/sat/tv741
 FOX新聞,https://fox-foxnewsnow-samsungus.amagi.tv/playlist720p.m3u8
@@ -47,6 +47,8 @@ TVBS亞洲,http://38.64.72.148/hls/modn/list/4005/chunklist0.m3u8
 富士電視,http://histar-proxy.isus.cc/fujitv
 非凡新聞,https://test.zapi.us.kg/?id=unique-business-news
 非凡新聞,http://23.26.147.19:1258/proxy/Smartv.php?id=feifannews_twn
+國興衛視,https://z88.ubtvfans.com/live/rx1/65/6cf1bba1b16518a5da5dda2c42e756cc/index.m3u8
+國興衛視-備,https://z88.ubtvfans.com/live/rx1/3261/dc094a4037fa569499de6f7989180277/index.m3u
 ##
 
 台灣-新聞,#genre#
