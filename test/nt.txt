@@ -77,16 +77,20 @@
       "name": "Smart知識"
     },
     {
-      "url": "https://www.youtube.com/watch?v=UK81GCw1KE8",
+      "url": "https://www.youtube.com/watch?v=WHednLn-HjA",
       "name": "卡通-我們這一家"
     },
     {
-      "url": "https://www.youtube.com/watch?v=2FJcu6qsM2k",
+      "url": "https://www.youtube.com/watch?v=JemHjZa_VEU",
       "name": "卡通-中華一番"
     },
     {
-      "url": "https://www.youtube.com/watch?v=_jP5o1W3eW0",
+      "url": "https://www.youtube.com/watch?v=T0J79UaCTAs",
       "name": "卡通-蠟筆小新"
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=dgAEF2ppKg8",
+      "name": "卡通-新哆啦A夢"
     },
 	{
       "url": "https://z88.ubtvfans.com/live/rx3/122/ad89305a0971c19e3980f5b9a743ca36/index.m3u8",
@@ -130,7 +134,7 @@
       "name": "東森新聞"
     },
     {
-      "url": "https://www.youtube.com/watch?v=WHEPzbFA3hw",
+      "url": "https://www.youtube.com/watch?v=1I2iq41Akmo",
       "name": "東森財經"
     },
     {
@@ -142,11 +146,7 @@
       "name": "寰宇財經"
     },
     {
-      "url": "https://www.youtube.com/watch?v=oZdzzvxTfUY",
-      "name": "三立新聞"
-    },
-    {
-      "url": "https://www.youtube.com/watch?v=pF507BLtbqU",
+      "url": "https://www.youtube.com/watch?v=MV9mI0GChwo",
       "name": "三立 iNEWS 新聞"
     },
     {
@@ -178,7 +178,7 @@
       "name": "日本 HTB 北海道新聞"
     },
     {
-      "url": "https://www.youtube.com/watch?v=m_dhMSvUCIc",
+      "url": "https://www.youtube.com/watch?v=0ZGvOztZhGI",
       "name": "TVBS新聞"
     },
     {
@@ -186,15 +186,15 @@
       "name": "TVBS新聞 (Line)"
     },
     {
-      "url": "https://www.youtube.com/watch?v=oIgbl7t0S_w",
+      "url": "https://www.youtube.com/watch?v=ViVGMUF9Ido",
       "name": "中天新聞"
     },
     {
-      "url": "https://www.youtube.com/watch?v=MJFaJER4Qxo",
+      "url": "https://www.youtube.com/watch?v=R2ci13O5Mt0",
       "name": "中天亞洲台"
     },
    {
-      "url": "https://www.youtube.com/watch?v=iyOq8DhaMYw",
+      "url": "https://www.youtube.com/watch?v=iEpJwprxDdk",
       "name": "Bloomberg Business News"
    }
   ]
