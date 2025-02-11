@@ -1,0 +1,30 @@
+#!name=Kill LINE VOOM
+#!desc=封鎖 LINE VOOM 的功能，手機將不再加載智障影片 v20241207.01 - 需啟用 MitM over HTTP/2 in loon CR.Jack L
+#!system=ios
+
+[Rule]
+URL-REGEX,"^https://voom-obs.line-scdn.net*",REJECT
+#Block videohub for streaming idiot vids
+URL-REGEX,"^https://legy.line-apps.com/ext/videohub/*.*",REJECT
+#Block recommendTab get feeds and data
+URL-REGEX,"^https://legy.line-apps.com*.*/tl/discover/api/v*.*/recommendTab/feeds$",REJECT
+#Block search function
+URL-REGEX,"^https://legy.line-apps.com*.*/tl/discover/api/v*.*/collage/searchEntry$",REJECT
+#Block followingTab get feeds and data 
+URL-REGEX,"^https://legy.line-apps.com*.*/tl/api/v*.*/feed$",REJECT
+URL-REGEX,"^https://legy.line-apps.com*.*/tl/api/v*.*/timeline/*.*",REJECT
+#Block anything about VOOM for yrself
+URL-REGEX,"^https://legy.line-apps.com*.*/st/*.*?/api/v*.*/story/*.*",REJECT
+URL-REGEX,"^https://legy.line-apps.com*.*/hm/*.*?/api/v*.*/home/*.*",REJECT
+URL-REGEX,"^https://legy.line-apps.com*.*/mh/*.*?/api/v*.*/hashtag/*.*",REJECT
+URL-REGEX,"^https://legy.line-apps.com*.*/eg/*.*?/api/v*.*/notification/*.*",REJECT
+URL-REGEX,"^https://legy.line-apps.com*.*/eg/*.*?/api/v*.*/notification/*.*",REJECT
+URL-REGEX,"^https://legy.line-apps.com*.*/eg/*.*?/api/v*.*/setting/*.*",REJECT
+URL-REGEX,"^https://legy.line-apps.com*.*/ma/*.*?/api/v*.*/home/*.*",REJECT
+URL-REGEX,"^https://legy.line-apps.com*.*/tl/*.*?/mapi/v*.*/contact/*.*",REJECT
+URL-REGEX,"^https://legy.line-apps.com*.*/tl/*.*?/discover/api/v*.*",REJECT
+#Fuck Sentry
+URL-REGEX,"^https://sentry-uit.line-apps.com/*.*",REJECT
+
+[MITM]
+hostname = sentry-uit.line-apps.com, legy.line-apps.com, voom-obs.line-scdn.net
