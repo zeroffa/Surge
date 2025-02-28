@@ -1,5 +1,5 @@
 #!name=Remove LINE ADs
-#!desc=刪掉 LINE 惱人的廣告 v20250120.01 - 需啟用 MitM over HTTP/2 in loon  cr.jkgtw
+#!desc=刪掉 LINE 惱人的廣告 v20250226.01 - 需啟用 MitM over HTTP/2 in jkgtw
 #!system=ios
 
 [Rule]
