@@ -182,10 +182,6 @@
       "name": "TVBS新聞"
     },
     {
-      "url": "https://today.line.me/tw/v2/article/jggMBa",
-      "name": "TVBS新聞 (Line)"
-    },
-    {
       "url": "https://www.youtube.com/watch?v=ViVGMUF9Ido",
       "name": "中天新聞"
     },
