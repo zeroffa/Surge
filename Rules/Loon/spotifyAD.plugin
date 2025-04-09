@@ -1,0 +1,14 @@
+#!name=Spotify(>=iOS15)
+#!desc=2024.05.27s 部分解鎖premium,音質不能設定為超高(建議登入後再開啟腳本,重開app等待腳本生效) IN Loon
+
+[Rewrite]
+# if-none-match回傳304代碼
+^https:\/\/spclient\.wg\.spotify\.com\/user-customization-service\/v1\/customize$ header-del if-none-match
+
+[Script]
+http-request ^https:\/\/spclient\.wg\.spotify\.com\/(artistview\/v1\/artist|album-entity-view\/v2\/album)\/ script-path=https://raw.githubusercontent.com/app2smile/rules/master/js/spotify-json.js, tag=spotify-json
+
+http-response ^https:\/\/spclient\.wg\.spotify\.com\/(bootstrap\/v1\/bootstrap|user-customization-service\/v1\/customize)$ script-path=https://raw.githubusercontent.com/app2smile/rules/master/js/spotify-proto.js, requires-body=true, binary-body-mode=true, tag=spotify-proto
+
+[MITM]
+hostname = spclient.wg.spotify.com
