@@ -80,3 +80,5 @@ DOMAIN-SUFFIX,live-apm.shopee.tw
 #! DOMAIN-SUFFIX,deo.shopeemobile.com
 #! DOMAIN-SUFFIX,ccms.shopee.io
 
+#! 街口
+URL-REGEX,^https:\/\/img\.jkos\.com\.tw\/ad\/image\/.*\.(png|jpg)$
