@@ -1,5 +1,5 @@
 #!name=BAN SITE LISTS
-#!desc=禁止連線網站列表 v202308.1
+#!desc=禁止連線網站列表 v20250418.1
 
 #! line
 #! DOMAIN-SUFFIX,lan.line.me
@@ -69,4 +69,14 @@ DOMAIN-SUFFIX,api.bugsnag.com
 DOMAIN-SUFFIX,notify.bugsnag.com
 DOMAIN-SUFFIX,advice-ads.s3.amazonaws.com
 DOMAIN-SUFFIX,adtago.s3.amazonaws.com
+
+#! 蝦皮
+DOMAIN-SUFFIX,chatroom-live.shopee.tw
+DOMAIN-SUFFIX,livestream.shopee.com
+DOMAIN-SUFFIX,live.shopee.tw
+DOMAIN-SUFFIX,play-spe.livestream.shopee.tw
+DOMAIN-SUFFIX,livetech.shopee.tw
+DOMAIN-SUFFIX,live-apm.shopee.tw
+#! DOMAIN-SUFFIX,deo.shopeemobile.com
+#! DOMAIN-SUFFIX,ccms.shopee.io
 
