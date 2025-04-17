@@ -1,0 +1,7 @@
+#!name=PASSRules
+#!desc=略過代理直接連線清單 v20250417.01
+
+DOMAIN-SUFFIX,ws.ptt.cc
+DOMAIN-SUFFIX,nextdns.io
+DOMAIN-SUFFIX,futa.gg
+DOMAIN-SUFFIX,nvr.snsd.fun
