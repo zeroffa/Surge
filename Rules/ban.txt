@@ -20,6 +20,8 @@ DOMAIN-SUFFIX,sjarvis.taobao.com
 DOMAIN-SUFFIX,midas-bandits-prod.duolingo.com
 DOMAIN-SUFFIX,shopee.cn
 DOMAIN-SUFFIX,firebase-settings.crashlytics.com
+IP-CIDR,95.161.76.100/31,pre-matching,no-resolve
+
 
 #! 遠傳log?
 #!DOMAIN,e2elog.fetnet.net
@@ -79,6 +81,8 @@ DOMAIN-SUFFIX,livetech.shopee.tw
 DOMAIN-SUFFIX,live-apm.shopee.tw
 #! DOMAIN-SUFFIX,deo.shopeemobile.com
 #! DOMAIN-SUFFIX,ccms.shopee.io
+URL-REGEX,^https:\/\/mall\.shopee\.tw\/userstats_record\/record$
+
 
 #! 街口
 URL-REGEX,^https:\/\/img\.jkos\.com\.tw\/ad\/image\/.*\.(png|jpg)$
