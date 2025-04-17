@@ -82,3 +82,6 @@ DOMAIN-SUFFIX,live-apm.shopee.tw
 
 #! 街口
 URL-REGEX,^https:\/\/img\.jkos\.com\.tw\/ad\/image\/.*\.(png|jpg)$
+
+#! google 登入
+DOMAIN,accounts.google.com/gsi/*,Rextended-matching
