@@ -2,6 +2,7 @@
 #!desc=略過代理直接連線清單 v20250417.01
 
 #! PTT
+DOMAIN,ws.ptt.cc
 DOMAIN-SUFFIX,ptt.cc
 
 #! 其他
