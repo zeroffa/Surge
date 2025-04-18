@@ -9,6 +9,7 @@ DOMAIN-SUFFIX,ptt.cc
 DOMAIN-SUFFIX,nextdns.io
 DOMAIN-SUFFIX,futa.gg
 DOMAIN-SUFFIX,nvr.snsd.fun
+DOMAIN-SUFFIX,snsd.fun
 
 #! 全家
 DOMAIN-SUFFIX,family.com.tw
