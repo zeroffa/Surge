@@ -2,14 +2,15 @@
 #!desc=略過代理直接連線清單 v20250417.01
 
 #! PTT
-DOMAIN,ws.ptt.cc
 DOMAIN-SUFFIX,ptt.cc
+DOMAIN-SUFFIX,ws.ptt.cc
 
 #! 其他
 DOMAIN-SUFFIX,nextdns.io
 DOMAIN-SUFFIX,futa.gg
 DOMAIN-SUFFIX,nvr.snsd.fun
 DOMAIN-SUFFIX,snsd.fun
+DOMAIN-SUFFIX,fase.idv.tw
 
 #! 全家
 DOMAIN-SUFFIX,family.com.tw
