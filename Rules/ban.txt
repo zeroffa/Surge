@@ -16,6 +16,8 @@ DOMAIN-SUFFIX,graph.facebook.com
 DOMAIN-SUFFIX,ocsp.pki.goog
 DOMAIN-SUFFIX,cnapi.hik-online.com
 DOMAIN-SUFFIX,ys7.com
+DOMAIN-SUFFIX,download.ezvizops.com
+DOMAIN-SUFFIX,ezvizops.com
 DOMAIN-SUFFIX,sjarvis.taobao.com
 DOMAIN-SUFFIX,midas-bandits-prod.duolingo.com
 DOMAIN-SUFFIX,shopee.cn
@@ -24,6 +26,7 @@ DOMAIN-SUFFIX,firebase-settings.crashlytics.com
 
 #! 遠傳log?
 #!DOMAIN,e2elog.fetnet.net
+
 #! FB
 DOMAIN-SUFFIX,connect.facebook.net
 
