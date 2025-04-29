@@ -1,5 +1,5 @@
 #!name=JAPAN OTT IN OC ONLINE
-#!desc=使用 Oracle Cloud 日本 VPS 連線v202212.01
+#!desc=使用 Oracle Cloud 日本 VPS 連線v20250429.01
 
 #! Tver
 DOMAIN-SUFFIX,brightcove.com
@@ -9,7 +9,9 @@ DOMAIN-SUFFIX,gorin.jp
 DOMAIN-SUFFIX,screens-lab.jp
 DOMAIN-SUFFIX,tver.co.jp
 DOMAIN-SUFFIX,tver.jp
+DOMAIN-SUFFIX,playback.api.streaks.jp
 USER-AGENT,TVer-Release*
+
 
 
 #! 其他
