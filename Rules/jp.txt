@@ -10,6 +10,8 @@ DOMAIN-SUFFIX,screens-lab.jp
 DOMAIN-SUFFIX,tver.co.jp
 DOMAIN-SUFFIX,tver.jp
 DOMAIN-SUFFIX,playback.api.streaks.jp
+DOMAIN-SUFFIX,vod-tver-cx.streaks.jp
+DOMAIN-SUFFIX,vod-tver-ex.streaks.jp
 USER-AGENT,TVer-Release*
 
 
