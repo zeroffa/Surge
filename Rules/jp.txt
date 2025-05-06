@@ -35,3 +35,4 @@ DOMAIN-SUFFIX,aeonpayment.com
 DOMAIN-SUFFIX,yodobashi.com
 DOMAIN-SUFFIX,waon.com
 DOMAIN-SUFFIX,nanaco-net.jp
+DOMAIN-SUFFIX,jrepoint.jp
