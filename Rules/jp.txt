@@ -1,5 +1,5 @@
 #!name=JAPAN OTT IN OC ONLINE
-#!desc=使用 Oracle Cloud 日本 VPS 連線v20250506.01
+#!desc=使用 Oracle Cloud 日本 VPS 連線v20250523.01
 
 #! Tver
 DOMAIN-SUFFIX,brightcove.com
@@ -13,7 +13,6 @@ DOMAIN-SUFFIX,playback.api.streaks.jp
 DOMAIN-SUFFIX,vod-tver-cx.streaks.jp
 DOMAIN-SUFFIX,vod-tver-ex.streaks.jp
 USER-AGENT,TVer-Release*
-
 
 
 #! 其他
@@ -36,3 +35,6 @@ DOMAIN-SUFFIX,yodobashi.com
 DOMAIN-SUFFIX,waon.com
 DOMAIN-SUFFIX,nanaco-net.jp
 DOMAIN-SUFFIX,jrepoint.jp
+
+#! 日本全家
+DOMAIN-SUFFIX,famipay.family.co.jp
