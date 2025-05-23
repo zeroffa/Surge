@@ -38,3 +38,5 @@ DOMAIN-SUFFIX,jrepoint.jp
 
 #! 日本全家
 DOMAIN-SUFFIX,famipay.family.co.jp
+DOMAIN-SUFFIX,family.co.jp
+
