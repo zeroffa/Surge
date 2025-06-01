@@ -40,3 +40,8 @@ DOMAIN-SUFFIX,jrepoint.jp
 DOMAIN-SUFFIX,famipay.family.co.jp
 DOMAIN-SUFFIX,family.co.jp
 
+#! 日本電氣行
+DOMAIN-SUFFIX,biccamera.com
+DOMAIN-SUFFIX,yodobashi.com
+DOMAIN-SUFFIX,yamada-denki.jp
+DOMAIN-SUFFIX,edion.co.jp
