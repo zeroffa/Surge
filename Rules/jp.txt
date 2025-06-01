@@ -1,5 +1,5 @@
-#!name=JAPAN OTT IN OC ONLINE
-#!desc=使用日本 VPS 連線v20250601.01
+#!name=JAPAN VPS connection
+#!desc=日本 VPS 連線v20250601.01
 
 #! Tver
 DOMAIN-SUFFIX,brightcove.com
