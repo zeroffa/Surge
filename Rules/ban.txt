@@ -22,7 +22,7 @@ DOMAIN-SUFFIX,sjarvis.taobao.com
 DOMAIN-SUFFIX,midas-bandits-prod.duolingo.com
 DOMAIN-SUFFIX,shopee.cn
 DOMAIN-SUFFIX,firebase-settings.crashlytics.com
-
+DOMAIN-SUFFIX,ai.immersivetranslate.com
 
 #! 遠傳log?
 #!DOMAIN,e2elog.fetnet.net
