@@ -1,6 +1,5 @@
 #!name=Remove LINE ADs
 #!desc=刪掉 LINE 惱人的廣告 v20250702.01 - 需啟用 MitM over HTTP/2 by jkgtw
-#!system=ios
 
 [Rule]
 URL-REGEX,"^https:\/\/a\.line\.me\/er\/lads\/v\d\/ei\?",REJECT-IMG
