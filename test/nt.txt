@@ -77,30 +77,6 @@
       "name": "Smart知識"
     },
     {
-      "url": "https://www.youtube.com/watch?v=WHednLn-HjA",
-      "name": "卡通-我們這一家"
-    },
-    {
-      "url": "https://www.youtube.com/watch?v=JemHjZa_VEU",
-      "name": "卡通-中華一番"
-    },
-    {
-      "url": "https://www.youtube.com/watch?v=T0J79UaCTAs",
-      "name": "卡通-蠟筆小新"
-    },
-    {
-      "url": "https://www.youtube.com/watch?v=dgAEF2ppKg8",
-      "name": "卡通-新哆啦A夢"
-    },
-	{
-      "url": "https://z88.ubtvfans.com/live/rx3/122/ad89305a0971c19e3980f5b9a743ca36/index.m3u8",
-      "name": "日本富士電視"
-    },
-    {
-      "url": "https://www.youtube.com/watch?v=tr77RbnfYIU",
-      "name": "日本 avex music"
-    },
-    {
       "url": "https://www.ofiii.com/channel/watch/4gtv-4gtv102",
       "name": "東森購物一"
     },
@@ -162,10 +138,6 @@
       "name": "日本 ANN 新聞"
     },
     {
-      "url": "https://www.youtube.com/watch?v=sTAqx_1Yrww",
-      "name": "日本 ABC 關西新聞"
-    },
-    {
       "url": "https://www.youtube.com/watch?v=e2pgLUmaxGs",
       "name": "日本 廣島 新聞"
     },
@@ -174,20 +146,16 @@
       "name": "日本 名古屋 新聞"
     },
     {
-      "url": "https://www.youtube.com/watch?v=d8CrKBU99Hg",
+      "url": "https://www.youtube.com/watch?v=7-Vky63lvek",
       "name": "日本 HTB 北海道新聞"
     },
     {
-      "url": "https://www.youtube.com/watch?v=m_dhMSvUCIc",
+      "url": "https://www.youtube.com/watch?v=2mCSYvcfhtc",
       "name": "TVBS新聞"
     },
     {
-      "url": "https://www.youtube.com/watch?v=ViVGMUF9Ido",
+      "url": "https://www.youtube.com/watch?v=BTV17O_fVxw",
       "name": "中天新聞"
-    },
-    {
-      "url": "https://www.youtube.com/watch?v=R2ci13O5Mt0",
-      "name": "中天亞洲台"
     },
    {
       "url": "https://www.youtube.com/watch?v=iEpJwprxDdk",
