@@ -1,5 +1,5 @@
 #!name=BAN SITE LISTS
-#!desc=禁止連線網站列表 v20250709.2
+#!desc=禁止連線網站列表 v20250709.3
 
 #! line
 #! DOMAIN-SUFFIX,lan.line.me
@@ -93,4 +93,3 @@ URL-REGEX,^https:\/\/img\.jkos\.com\.tw\/ad\/image\/.*\.(png|jpg)$
 
 #! google 登入
 DOMAIN,accounts.google.com/gsi/*,Rextended-matching
-
