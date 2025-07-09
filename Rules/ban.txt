@@ -83,6 +83,8 @@ DOMAIN-SUFFIX,livetech.shopee.tw
 DOMAIN-SUFFIX,live-apm.shopee.tw
 #! DOMAIN-SUFFIX,deo.shopeemobile.com
 #! DOMAIN-SUFFIX,ccms.shopee.io
+DOMAIN-SUFFIX,deo.shopeemobile.com
+DOMAIN-SUFFIX,ccms.shopee.io
 URL-REGEX,^https:\/\/mall\.shopee\.tw\/userstats_record\/record$
 
 
