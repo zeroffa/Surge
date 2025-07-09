@@ -1,5 +1,5 @@
 #!name=BAN SITE LISTS
-#!desc=禁止連線網站列表 v20250418.1
+#!desc=禁止連線網站列表 v20250709.1
 
 #! line
 #! DOMAIN-SUFFIX,lan.line.me
@@ -20,7 +20,6 @@ DOMAIN-SUFFIX,download.ezvizops.com
 DOMAIN-SUFFIX,ezvizops.com
 DOMAIN-SUFFIX,sjarvis.taobao.com
 DOMAIN-SUFFIX,midas-bandits-prod.duolingo.com
-DOMAIN-SUFFIX,shopee.cn
 DOMAIN-SUFFIX,firebase-settings.crashlytics.com
 DOMAIN-SUFFIX,ai.immersivetranslate.com
 
@@ -85,6 +84,7 @@ DOMAIN-SUFFIX,live-apm.shopee.tw
 #! DOMAIN-SUFFIX,ccms.shopee.io
 DOMAIN-SUFFIX,deo.shopeemobile.com
 DOMAIN-SUFFIX,ccms.shopee.io
+DOMAIN-SUFFIX,shopee.cn
 URL-REGEX,^https:\/\/mall\.shopee\.tw\/userstats_record\/record$
 
 
