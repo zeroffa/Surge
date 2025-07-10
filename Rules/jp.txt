@@ -28,10 +28,8 @@ DOMAIN-SUFFIX,mobilesuica.com
 DOMAIN-SUFFIX,flightradar24.com
 
 #! 日本常用網站
-DOMAIN-SUFFIX,biccamera.com
 DOMAIN-SUFFIX,paypay.ne.jp
 DOMAIN-SUFFIX,aeonpayment.com
-DOMAIN-SUFFIX,yodobashi.com
 DOMAIN-SUFFIX,waon.com
 DOMAIN-SUFFIX,nanaco-net.jp
 DOMAIN-SUFFIX,jrepoint.jp
@@ -41,7 +39,7 @@ DOMAIN-SUFFIX,famipay.family.co.jp
 DOMAIN-SUFFIX,family.co.jp
 
 #! 日本電氣行
-DOMAIN-SUFFIX,biccamera.com
-DOMAIN-SUFFIX,yodobashi.com
+#! DOMAIN-SUFFIX,biccamera.com
+#! DOMAIN-SUFFIX,yodobashi.com
 DOMAIN-SUFFIX,yamada-denki.jp
 DOMAIN-SUFFIX,edion.co.jp
