@@ -1,5 +1,5 @@
 #!name=JAPAN VPS connection
-#!desc=日本 VPS 連線v20250601.01
+#!desc=日本 VPS 連線v20250710.01
 
 #! Tver
 DOMAIN-SUFFIX,brightcove.com
