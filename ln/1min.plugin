@@ -1,13 +1,14 @@
-#!name=1min.ai 自動登入 
+#!name=1min.ai 自動登入
 #!desc=每日自動登入 1min.ai 帳號 Ref.Zac by loon
 #!arguments-desc=請填入您的1min.ai帳號和密碼
 
-[Argument]Cron=input,15 11 * * *,tag=Cron, desc=每天登入時間
-[Argument]Email=input,帳號,tag=Email, desc=帳號
-[Argument]Password=input,密碼,tag=Password, desc=帳號
+[Argument]
+Cron = input,15 11 * * *,tag=Cron格式 , desc=每天登入時間
+ID = input,帳號,tag=Email, desc=帳號
+PW = input,密碼,tag=Password, desc=帳號
 
 [Script]
-cron "{Cron}" script-path=https://raw.githubusercontent.com/7a6163/Surge/main/Script/1min-login.js, timeout=30, tag=1min-daily-login, argument=email={Email}&password={Password}
+cron {Cron} script-path=https://raw.githubusercontent.com/7a6163/Surge/main/Script/1min-login.js, timeout=30, tag=1min-daily-login, argument=email=[{ID}]&password=[{PW}]
 
 [MITM]
 hostname = api.1min.ai
