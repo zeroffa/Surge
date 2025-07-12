@@ -154,7 +154,7 @@
       "name": "TVBS新聞"
     },
     {
-      "url": "https://www.youtube.com/watch?v=BTV17O_fVxw",
+      "url": "https://www.youtube.com/watch?v=vr3XyVCR4T0",
       "name": "中天新聞"
     },
    {
