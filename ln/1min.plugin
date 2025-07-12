@@ -8,7 +8,7 @@ ID = input,帳號,tag=Email, desc=帳號
 PW = input,密碼,tag=Password, desc=帳號
 
 [Script]
-cron {Cron} script-path=https://raw.githubusercontent.com/7a6163/Surge/main/Script/1min-login.js, timeout=30, tag=1min-daily-login, argument=email=[{ID}]&password=[{PW}]
+cron {Cron} script-path=https://raw.githubusercontent.com/7a6163/Surge/main/Script/1min-login.js, timeout=30, tag=1min-daily-login, argument=[{ID},{PW}]
 
 [MITM]
 hostname = api.1min.ai
