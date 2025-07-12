@@ -1,14 +1,19 @@
 #!name=1min.ai 自動登入
-#!desc=每日自動登入 1min.ai 帳號 Ref.Zac by loon
-#!arguments-desc=請填入您的1min.ai帳號和密碼
+#!desc=每日自動登入 1min.ai 帳號。此插件基於 Zac 的腳本修改以符合 Loon 格式。
+#!author=Zac (Original Script), Loon Plugin by [Your Name]
+#!homepage=https://github.com/7a6163/Surge/blob/main/Script/1min-login.js
 
 [Argument]
-Cron = input,15 11 * * *,tag=Cron格式 , desc=每天登入時間
-ID = input,帳號,tag=Email, desc=帳號
-PW = input,密碼,tag=Password, desc=帳號
+# 參數的預設值需要用雙引號包起來
+Cron = input,"15 11 * * *",tag=Cron格式,desc=每日自動登入時間，格式為：分 時 日 月 週
+ID = input,"請輸入Email",tag=帳號,desc=您在 1min.ai 的註冊 Email
+PW = input,"請輸入密碼",tag=密碼,desc=您在 1min.ai 的密碼
 
 [Script]
+# 1. 使用 {Cron} 引用上方定義的變數
+# 2. argument 的格式修改為 Loon 的標準格式 [{ID},{PW}]
 cron {Cron} script-path=https://raw.githubusercontent.com/7a6163/Surge/main/Script/1min-login.js, timeout=30, tag=1min-daily-login, argument=[{ID},{PW}]
 
-[MITM]
+
+ [MITM]
 hostname = api.1min.ai
