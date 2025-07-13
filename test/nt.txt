@@ -154,6 +154,10 @@
       "name": "TVBS新聞"
     },
     {
+      "url": "https://www.youtube.com/watch?v=2mCSYvcfhtc",
+      "name": "TVBS新聞 2"
+    },
+    {
       "url": "https://www.youtube.com/watch?v=vr3XyVCR4T0",
       "name": "中天新聞"
     },
