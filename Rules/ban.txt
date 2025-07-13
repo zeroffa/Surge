@@ -93,3 +93,6 @@ URL-REGEX,^https:\/\/img\.jkos\.com\.tw\/ad\/image\/.*\.(png|jpg)$
 
 #! google 登入
 DOMAIN,accounts.google.com/gsi/*,Rextended-matching
+
+#! 沉潯式翻譯
+DOMAIN,analytics.immersivetranslate.com
