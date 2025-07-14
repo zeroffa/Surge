@@ -1,5 +1,5 @@
 #!name=BAN SITE LISTS
-#!desc=禁止連線網站列表 v20250714.1
+#!desc=禁止連線網站列表 v20250715.1
 
 #! line
 #! DOMAIN-SUFFIX,lan.line.me
@@ -26,8 +26,25 @@ DOMAIN-SUFFIX,ai.immersivetranslate.com
 #! 遠傳log?
 #!DOMAIN,e2elog.fetnet.net
 
-#! FB
+#! meta
+DOMAIN-SUFFIX,adsapi.facebook.com
+DOMAIN-SUFFIX,akamaihd.net
+DOMAIN-SUFFIX,akaquill.net
+DOMAIN-SUFFIX,api.instagram.com
+DOMAIN-SUFFIX,chargebee.com
+DOMAIN-SUFFIX,telegraph-ash.instagram.com
+DOMAIN-SUFFIX,tracking.facebook.com
+DOMAIN-SUFFIX,business.instagram.com
 DOMAIN-SUFFIX,connect.facebook.net
+DOMAIN-SUFFIX,graph.facebook.com
+DOMAIN-SUFFIX,graph.instagram.com
+DOMAIN-SUFFIX,gateway.facebook.com
+DOMAIN-SUFFIX,test-gateway.instagram.com
+DOMAIN-SUFFIX,black.ish.instagram.com
+DOMAIN-SUFFIX,white.ish.instagram.com
+DOMAIN-SUFFIX,scontent-xx.instagram.com
+DOMAIN-SUFFIX,fbcms.net
+DOMAIN-SUFFIX,static.instagram.com
 
 #! 蘋果新聞
 DOMAIN-SUFFIX,appledaily.com.tw
