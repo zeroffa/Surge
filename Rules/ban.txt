@@ -27,24 +27,61 @@ DOMAIN-SUFFIX,ai.immersivetranslate.com
 #!DOMAIN,e2elog.fetnet.net
 
 #! meta
-DOMAIN-SUFFIX,adsapi.facebook.com
+#! Akamai 是一個內容傳遞網路 (CDN)，Facebook 和 Instagram 廣泛使用來分發圖片、影片等媒體內容，加快載入速度。
+#! 封鎖將嚴重影響圖片和影片載入。
 DOMAIN-SUFFIX,akamaihd.net
-DOMAIN-SUFFIX,akaquill.net
+
+#! Instagram 的主要 API 服務，負責大部分應用程式的數據交換。
 DOMAIN-SUFFIX,api.instagram.com
-DOMAIN-SUFFIX,chargebee.com
-DOMAIN-SUFFIX,telegraph-ash.instagram.com
-DOMAIN-SUFFIX,tracking.facebook.com
-DOMAIN-SUFFIX,business.instagram.com
+
+#! Facebook 社交外掛和連接功能，常用於第三方網站的登入或分享。
 DOMAIN-SUFFIX,connect.facebook.net
-DOMAIN-SUFFIX,graph.facebook.com
-DOMAIN-SUFFIX,graph.instagram.com
-DOMAIN-SUFFIX,gateway.facebook.com
-DOMAIN-SUFFIX,test-gateway.instagram.com
-DOMAIN-SUFFIX,black.ish.instagram.com
-DOMAIN-SUFFIX,white.ish.instagram.com
-DOMAIN-SUFFIX,scontent-xx.instagram.com
+
+#! Facebook 的內容管理系統相關網域，可能涉及內容傳輸。
 DOMAIN-SUFFIX,fbcms.net
+
+#! Facebook 服務的通用閘道器，許多內部和外部服務的入口。
+DOMAIN-SUFFIX,gateway.facebook.com
+
+#! Facebook Graph API 的核心，處理各種數據讀寫和互動。
+DOMAIN-SUFFIX,graph.facebook.com
+
+#! Instagram Graph API 的核心，處理各種數據讀寫和互動。
+DOMAIN-SUFFIX,graph.instagram.com
+
+#! 用於傳輸圖片、影片等用戶內容。強烈建議放行，否則你將無法看到圖片和影片。
+DOMAIN-SUFFIX,scontent-xx.instagram.com
+
+#! Instagram 的靜態內容，如圖片、JavaScript 腳本、CSS 等。
 DOMAIN-SUFFIX,static.instagram.com
+#! Facebook 廣告 API 的介面。主要供廣告商或廣告管理工具使用。如果你不是廣告商，可以封鎖。
+DOMAIN-SUFFIX,adsapi.facebook.com
+
+#! 可能與 Facebook 的一些內部或測試服務有關，或是用於數據收集。通常可以封鎖。
+DOMAIN-SUFFIX,akaquill.net
+
+#! 內部測試、數據收集或特殊功能相關網域，可能與 A/B 測試或遙測有關。可以考慮封鎖。
+DOMAIN-SUFFIX,black.ish.instagram.com
+
+#! Instagram 商業帳號或商務管理平台相關功能。如果你不是商家或不使用這些商業工具，可以封鎖。
+DOMAIN-SUFFIX,business.instagram.com
+
+#! 第三方訂閱管理平台。Facebook 可能在某些商業服務或訂閱功能上使用它。如果你不使用這些商業功能，可以封鎖。
+DOMAIN-SUFFIX,chargebee.com
+
+#! 通常與數據日誌或分析相關，可能用於收集應用程式效能或用戶行為數據。可以考慮封鎖以增強隱私。
+DOMAIN-SUFFIX,telegraph-ash.instagram.com
+
+#! 明顯是 Instagram 的測試環境閘道器。普通用戶不需要訪問。可以封鎖。
+DOMAIN-SUFFIX,test-gateway.instagram.com
+
+#! 明確的追蹤網域，用於 Facebook Pixel 等追蹤用戶在外部網站行為的功能。強烈建議封鎖以保護隱私。
+DOMAIN-SUFFIX,tracking.facebook.com
+
+#! 內部測試、數據收集或特殊功能相關網域，可能與 A/B 測試或遙測有關。可以考慮封鎖。
+DOMAIN-SUFFIX,white.ish.instagram.com
+
+
 
 #! 蘋果新聞
 DOMAIN-SUFFIX,appledaily.com.tw
