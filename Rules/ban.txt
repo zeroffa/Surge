@@ -29,31 +29,32 @@ DOMAIN-SUFFIX,ai.immersivetranslate.com
 #! meta
 #! Akamai 是一個內容傳遞網路 (CDN)，Facebook 和 Instagram 廣泛使用來分發圖片、影片等媒體內容，加快載入速度。
 #! 封鎖將嚴重影響圖片和影片載入。
-DOMAIN-SUFFIX,akamaihd.net
+#!DOMAIN-SUFFIX,akamaihd.net
 
 #! Instagram 的主要 API 服務，負責大部分應用程式的數據交換。
-DOMAIN-SUFFIX,api.instagram.com
+#!DOMAIN-SUFFIX,api.instagram.com
 
 #! Facebook 社交外掛和連接功能，常用於第三方網站的登入或分享。
-DOMAIN-SUFFIX,connect.facebook.net
+#!DOMAIN-SUFFIX,connect.facebook.net
 
 #! Facebook 的內容管理系統相關網域，可能涉及內容傳輸。
-DOMAIN-SUFFIX,fbcms.net
+#!DOMAIN-SUFFIX,fbcms.net
 
 #! Facebook 服務的通用閘道器，許多內部和外部服務的入口。
-DOMAIN-SUFFIX,gateway.facebook.com
+#!DOMAIN-SUFFIX,gateway.facebook.com
 
 #! Facebook Graph API 的核心，處理各種數據讀寫和互動。
 DOMAIN-SUFFIX,graph.facebook.com
 
 #! Instagram Graph API 的核心，處理各種數據讀寫和互動。
-DOMAIN-SUFFIX,graph.instagram.com
+#!DOMAIN-SUFFIX,graph.instagram.com
 
 #! 用於傳輸圖片、影片等用戶內容。強烈建議放行，否則你將無法看到圖片和影片。
-DOMAIN-SUFFIX,scontent-xx.instagram.com
+#!DOMAIN-SUFFIX,scontent-xx.instagram.com
 
 #! Instagram 的靜態內容，如圖片、JavaScript 腳本、CSS 等。
-DOMAIN-SUFFIX,static.instagram.com
+#!DOMAIN-SUFFIX,static.instagram.com
+
 #! Facebook 廣告 API 的介面。主要供廣告商或廣告管理工具使用。如果你不是廣告商，可以封鎖。
 DOMAIN-SUFFIX,adsapi.facebook.com
 
