@@ -1,11 +1,12 @@
 #!name=BAN SITE LISTS
-#!desc=禁止連線網站列表 v20250715.02
+#!desc=禁止連線網站列表 v20250716.03
 
 #! line
 #! DOMAIN-SUFFIX,lan.line.me
 DOMAIN-SUFFIX,crs-event.line.me
 #! DOMAIN-SUFFIX,profile.line-scdn.net
-#1 DOMAIN-SUFFIX,search.line.me
+#! DOMAIN-SUFFIX,search.line.me
+DOMAIN-SUFFIX,a.line.me
 
 #! 其他
 DOMAIN-SUFFIX,appcenter.ms
