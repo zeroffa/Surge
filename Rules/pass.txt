@@ -1,5 +1,5 @@
 #!name=PASSRules
-#!desc=略過代理直接連線清單 v20250702.01
+#!desc=略過代理直接連線清單 v20250717.01
 
 #! PTT
 DOMAIN-SUFFIX,ptt.cc
