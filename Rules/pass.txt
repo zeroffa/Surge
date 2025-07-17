@@ -16,3 +16,6 @@ DOMAIN-SUFFIX,fase.idv.tw
 
 #! 全家
 DOMAIN-SUFFIX,family.com.tw
+
+#! controld
+DOMAIN-SUFFIX,controld.com
