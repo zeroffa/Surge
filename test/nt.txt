@@ -32,18 +32,6 @@
       "url": "https://www.youtube.com/watch?v=DTNkEm6jaqQ",
       "name": "大愛二"
     },
-	 {
-      "url": "rtmp://f13h.mine.nu/sat/tv771",
-      "name": "緯來日本"
-    },
-	 {
-      "url": "rtmp://f13h.mine.nu/sat/tv721",
-      "name": "緯來體育"
-    },
-    {
-      "url": "https://z88.ubtvfans.com/live/rx1/65/6cf1bba1b16518a5da5dda2c42e756cc/index.m3u8",
-      "name": "國興衛視"
-    },
     {
       "url": "https://www.ofiii.com/channel/watch/litv-longturn17",
       "name": "亞洲旅遊"
