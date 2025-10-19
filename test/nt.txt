@@ -110,7 +110,7 @@
       "name": "寰宇新聞"
     },
     {
-      "url": "https://www.ofiii.com/channel/watch/litv-longturn23",
+      "url": "https://www.youtube.com/watch?v=EnuEsX3FSh0",
       "name": "寰宇財經"
     },
     {
@@ -148,10 +148,6 @@
     {
       "url": "https://www.youtube.com/watch?v=vr3XyVCR4T0",
       "name": "中天新聞"
-    },
-    {
-      "url": "https://www.youtube.com/watch?v=dKkyfjn8xq8",
-      "name": "中天亞洲"
     },
    {
       "url": "https://www.youtube.com/watch?v=iEpJwprxDdk",
