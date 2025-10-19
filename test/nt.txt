@@ -5,6 +5,10 @@
       "name": "台視"
     },
     {
+      "url": "https://www.youtube.com/watch?v=uDqQo8a7Xmk",
+      "name": "台視-YT"
+    },
+    {
       "url": "https://www.ofiii.com/channel/watch/4gtv-4gtv040",
       "name": "中視"
     },
@@ -110,7 +114,7 @@
       "name": "東森新聞"
     },
     {
-      "url": "https://www.youtube.com/watch?v=1I2iq41Akmo",
+      "url": "https://www.youtube.com/user/57ETFN/live",
       "name": "東森財經"
     },
     {
@@ -122,7 +126,7 @@
       "name": "寰宇財經"
     },
     {
-      "url": "https://www.youtube.com/watch?v=MV9mI0GChwo",
+      "url": "https://www.youtube.com/watch?v=pF507BLtbqU",
       "name": "三立 iNEWS 新聞"
     },
     {
@@ -154,12 +158,16 @@
       "name": "TVBS新聞"
     },
     {
-      "url": "https://www.youtube.com/watch?v=2mCSYvcfhtc",
-      "name": "TVBS新聞 2"
+      "url": "https://www.youtube.com/watch?v=m_dhMSvUCIc",
+      "name": "TVBS新聞-YT"
     },
     {
       "url": "https://www.youtube.com/watch?v=vr3XyVCR4T0",
       "name": "中天新聞"
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=dKkyfjn8xq8",
+      "name": "中天亞洲"
     },
    {
       "url": "https://www.youtube.com/watch?v=iEpJwprxDdk",
