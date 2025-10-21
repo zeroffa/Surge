@@ -33,7 +33,7 @@
       "name": "大愛二"
     },
     {
-      "url": "https://www.ofiii.com/channel/watch/litv-longturn17",
+      "url": "https://www.ofiii.com/channel/watch/4gtv-4gtv076",
       "name": "亞洲旅遊"
     },
     {
@@ -59,6 +59,10 @@
     {
       "url": "https://www.ofiii.com/channel/watch/litv-longturn03",
       "name": "龍華電影"
+    },
+    {
+      "url": "https://www.ofiii.com/channel/watch/litv-longturn02",
+      "name": "龍華洋片"
     },
     {
       "url": "https://www.ofiii.com/channel/watch/litv-longturn22",
@@ -138,7 +142,7 @@
       "name": "日本 名古屋 新聞"
     },
     {
-      "url": "https://www.youtube.com/watch?v=7-Vky63lvek",
+      "url": "https://www.youtube.com/c/htbnews/live",
       "name": "日本 HTB 北海道新聞"
     },
     {
