@@ -7,6 +7,25 @@ DOMAIN-SUFFIX,crs-event.line.me
 #! DOMAIN-SUFFIX,profile.line-scdn.net
 #! DOMAIN-SUFFIX,search.line.me
 DOMAIN-SUFFIX,a.line.me
+#! line voom
+URL-REGEX,^https://legy.line-apps.com/ext/videohub/*.*,REJECT
+URL-REGEX,^https://legy.line-apps.com*.*/tl/discover/api/v*.*/recommendTab/feeds$,REJECT
+URL-REGEX,^https://legy.line-apps.com*.*/tl/discover/api/v*.*/collage/searchEntry$,REJECT
+URL-REGEX,^https://legy.line-apps.com*.*/tl/api/v*.*/feed$,REJECT
+URL-REGEX,^https://legy.line-apps.com*.*/tl/api/v*.*/timeline/*.*,REJECT
+
+#! line today
+URL-REGEX,^https://a\.line\.me/lgfp/lad/*.*,REJECT
+URL-REGEX,^https://today\.line\.me/api/user/*.*,REJECT
+#Block reader interaction and reply
+URL-REGEX,^https://today\.line.me/webapi/interaction/*.*,REJECT
+URL-REGEX,^https://today.line.me/webapi/social-feed/*.*,REJECT
+# Line ad
+URL-REGEX,^https://static.line-scdn.net/lineads/*.*,REJECT
+
+#Block logging read history
+URL-REGEX,^https://today\.line\.me/webapi/logging/*.*,REJECT
+
 
 #! 其他
 DOMAIN-SUFFIX,appcenter.ms
@@ -135,3 +154,5 @@ DOMAIN,accounts.google.com/gsi/*,Rextended-matching
 
 #! 沉潯式翻譯
 DOMAIN,analytics.immersivetranslate.com
+
+
