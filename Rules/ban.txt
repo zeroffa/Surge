@@ -1,5 +1,5 @@
 #!name=BAN SITE LISTS
-#!desc=禁止連線網站列表 v20250716.03
+#!desc=禁止連線網站列表 v20251214.01
 
 #! line
 #! DOMAIN-SUFFIX,lan.line.me
@@ -31,7 +31,9 @@ URL-REGEX,^https://today\.line\.me/webapi/logging/*.*,REJECT
 DOMAIN-SUFFIX,appcenter.ms
 DOMAIN-SUFFIX,z7.web.core.windows.net
 DOMAIN-SUFFIX,firebaseio.com
-DOMAIN-SUFFIX,cloudfunctions.net
+
+#DOMAIN-SUFFIX,cloudfunctions.net
+
 DOMAIN-SUFFIX,graph.facebook.com
 DOMAIN-SUFFIX,ocsp.pki.goog
 DOMAIN-SUFFIX,cnapi.hik-online.com
