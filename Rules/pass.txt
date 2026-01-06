@@ -1,17 +1,17 @@
 #!name=PASSRules
-#!desc=略過代理直接連線清單 v20250816.01
+#!desc=略過代理直接連線清單 v20260107.01
 
 #! PTT
 DOMAIN-SUFFIX,ptt.cc
 DOMAIN-SUFFIX,ws.ptt.cc
 
 #! 其他
-DOMAIN-SUFFIX,nextdns.io
+#! DOMAIN-SUFFIX,nextdns.io
 DOMAIN-SUFFIX,futa.gg
-DOMAIN-SUFFIX,nvr.lovetw.de
-DOMAIN-SUFFIX,nvr.snsd.uk
-DOMAIN-SUFFIX,snsd.uk
-DOMAIN-SUFFIX,lovetw.de
+#! DOMAIN-SUFFIX,nvr.lovetw.de
+#! DOMAIN-SUFFIX,nvr.snsd.uk
+#! DOMAIN-SUFFIX,snsd.uk
+#! DOMAIN-SUFFIX,lovetw.de
 DOMAIN-SUFFIX,fase.idv.tw
 
 #! 全家
