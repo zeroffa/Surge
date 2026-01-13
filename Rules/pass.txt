@@ -7,15 +7,18 @@ DOMAIN-SUFFIX,ws.ptt.cc
 
 #! 其他
 #! DOMAIN-SUFFIX,nextdns.io
+
 DOMAIN-SUFFIX,futa.gg
+
 #! DOMAIN-SUFFIX,nvr.lovetw.de
 #! DOMAIN-SUFFIX,nvr.snsd.uk
 #! DOMAIN-SUFFIX,snsd.uk
 #! DOMAIN-SUFFIX,lovetw.de
+
 DOMAIN-SUFFIX,fase.idv.tw
 
 #! 全家
-DOMAIN-SUFFIX,family.com.tw
+#! DOMAIN-SUFFIX,family.com.tw
 
 #! controld
 DOMAIN-SUFFIX,controld.com
