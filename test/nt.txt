@@ -1,10 +1,6 @@
 {
  "channelList": [
     {
-      "url": "https://www.ofiii.com/channel/watch/4gtv-4gtv066",
-      "name": "台視"
-    },
-    {
       "url": "https://www.youtube.com/watch?v=uDqQo8a7Xmk",
       "name": "台視-YT"
     },
