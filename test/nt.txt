@@ -49,7 +49,7 @@
       "name": "龍華卡通"
     },
     {
-      "url": "https://www.ofiii.com/channel/watch/litv-longturn21",
+      "url": "https://www.ofiii.com/channel/watch/litv-xinchuang21",
       "name": "龍華經典"
     },
     {
