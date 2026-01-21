@@ -25,7 +25,7 @@
       "name": "大愛一"
     },
     {
-      "url": "https://www.youtube.com/watch?v=DTNkEm6jaqQ",
+      "url": "https://www.youtube.com/watch?v=OKvWtVoDR8I",
       "name": "大愛二"
     },
     {
@@ -69,20 +69,12 @@
       "name": "Smart知識"
     },
     {
-      "url": "https://www.ofiii.com/channel/watch/ofiii70",
-      "name": "Golden 強片台"
-    },
-    {
-      "url": "https://www.ofiii.com/channel/watch/ofiii76",
-      "name": "Golden影迷台"
-    },
-    {
       "url": "https://www.ofiii.com/channel/watch/4gtv-4gtv102",
-      "name": "東森購物-1"
+      "name": "東森購物 1"
     },
     {
       "url": "https://www.ofiii.com/channel/watch/4gtv-4gtv103",
-      "name": "東森購物-2"
+      "name": "東森購物 2"
     },
     {
       "url": "https://www.youtube.com/watch?v=ylYJSBUgaMA",
