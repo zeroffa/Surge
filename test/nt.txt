@@ -33,19 +33,19 @@
       "name": "亞洲旅遊"
     },
     {
-      "url": "https://www.ofiii.com/channel/watch/litv-longturn12",
+      "url": "https://www.ofiii.com/channel/watch/litv-xinchuang12",
       "name": "龍華偶像"
     },
     {
-      "url": "https://www.ofiii.com/channel/watch/litv-longturn11",
+      "url": "https://www.ofiii.com/channel/watch/litv-xinchuang11",
       "name": "龍華日韓"
     },
     {
-      "url": "https://www.ofiii.com/channel/watch/litv-longturn18",
+      "url": "https://www.ofiii.com/channel/watch/litv-xinchuang18",
       "name": "龍華戲劇"
     },
     {
-      "url": "https://www.ofiii.com/channel/watch/litv-longturn01",
+      "url": "https://www.ofiii.com/channel/watch/litv-xinchuang01",
       "name": "龍華卡通"
     },
     {
@@ -53,28 +53,36 @@
       "name": "龍華經典"
     },
     {
-      "url": "https://www.ofiii.com/channel/watch/litv-longturn03",
+      "url": "https://www.ofiii.com/channel/watch/litv-xinchuang03",
       "name": "龍華電影"
     },
     {
-      "url": "https://www.ofiii.com/channel/watch/litv-longturn02",
+      "url": "https://www.ofiii.com/channel/watch/litv-xinchuang02",
       "name": "龍華洋片"
     },
     {
-      "url": "https://www.ofiii.com/channel/watch/litv-longturn22",
+      "url": "https://www.ofiii.com/channel/watch/litv-xinchuang22",
       "name": "台灣戲劇"
     },
     {
-      "url": "https://www.ofiii.com/channel/watch/litv-longturn19",
+      "url": "https://www.ofiii.com/channel/watch/litv-xinchuang19",
       "name": "Smart知識"
     },
     {
+      "url": "https://www.ofiii.com/channel/watch/ofiii70",
+      "name": "Golden 強片台"
+    },
+    {
+      "url": "https://www.ofiii.com/channel/watch/ofiii76",
+      "name": "Golden影迷台"
+    },
+    {
       "url": "https://www.ofiii.com/channel/watch/4gtv-4gtv102",
-      "name": "東森購物一"
+      "name": "東森購物-1"
     },
     {
       "url": "https://www.ofiii.com/channel/watch/4gtv-4gtv103",
-      "name": "東森購物二"
+      "name": "東森購物-2"
     },
     {
       "url": "https://www.youtube.com/watch?v=ylYJSBUgaMA",
