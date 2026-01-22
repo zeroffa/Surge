@@ -93,25 +93,37 @@
       "name": "華視新聞"
     },
     {
+      "url": "https://www.youtube.com/c/PNNPTS/live",
+      "name": "公視新聞"
+    },
+    {
       "url": "https://aka03p.akamaized.net/litv/fet001.smil/playlist.m3u8",
       "name": "非凡新聞",
       "header": "Referer: https://fetfriday.svc.litv.tv/"
+    },
+    {
+      "url": "https://www.youtube.com/@ustvbiz/live",
+      "name": "非凡財經-YT"
+    },
+    {
+      "url": "https://www.youtube.com/@57ETFN/live",
+      "name": "東森財經"
+    },
+    {
+      "url": "https://www.youtube.com/@globalmoneytv/live",
+      "name": "寰宇新聞財經"
     },
     {
       "url": "https://www.youtube.com/watch?v=V1p33hqPrUk",
       "name": "東森新聞"
     },
     {
-      "url": "https://www.youtube.com/user/57ETFN/live",
-      "name": "東森財經"
-    },
-    {
       "url": "https://www.youtube.com/watch?v=6IquAgfvYmc",
       "name": "寰宇新聞"
     },
     {
-      "url": "https://www.youtube.com/watch?v=EnuEsX3FSh0",
-      "name": "寰宇財經"
+      "url": "https://www.youtube.com/watch?v=QsGswQvRmtU",
+      "name": "三立新聞"
     },
     {
       "url": "https://www.youtube.com/watch?v=pF507BLtbqU",
@@ -128,6 +140,18 @@
     {
       "url": "https://www.youtube.com/watch?v=coYw-eVU0Ks",
       "name": "日本 ANN 新聞"
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=t9kwjZBLI-A",
+      "name": "日本電視新聞"
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=Anr15FA9OCI",
+      "name": "日本TBS新聞"
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=f0lYkdA-Gtw",
+      "name": "日本 NHK WORLD 新聞"
     },
     {
       "url": "https://www.youtube.com/watch?v=e2pgLUmaxGs",
@@ -152,6 +176,10 @@
    {
       "url": "https://www.youtube.com/watch?v=iEpJwprxDdk",
       "name": "Bloomberg Business News"
+   },
+   {
+      "url": "https://www.youtube.com/watch?v=91PfFoqvuUk",
+      "name": "桃園機場即時影像"
    }
   ]
 }
