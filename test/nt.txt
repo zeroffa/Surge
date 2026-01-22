@@ -143,7 +143,7 @@
     },
     {
       "url": "https://www.youtube.com/watch?v=t9kwjZBLI-A",
-      "name": "日本電視新聞"
+      "name": "日本電視 新聞"
     },
     {
       "url": "https://www.youtube.com/watch?v=Anr15FA9OCI",
