@@ -147,11 +147,15 @@
     },
     {
       "url": "https://www.youtube.com/watch?v=Anr15FA9OCI",
-      "name": "日本TBS新聞"
+      "name": "日本 TBS 新聞"
     },
     {
       "url": "https://www.youtube.com/watch?v=f0lYkdA-Gtw",
-      "name": "日本 NHK WORLD 新聞"
+      "name": "日本 NHK WORLD 新聞-ENG"
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=Ili9_YMvYQs",
+      "name": "日本 朝日ABC 新聞"
     },
     {
       "url": "https://www.youtube.com/watch?v=e2pgLUmaxGs",
@@ -164,6 +168,22 @@
     {
       "url": "https://www.youtube.com/c/htbnews/live",
       "name": "日本 HTB 北海道新聞"
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=cA5TXs7YLmc",
+      "name": "韓國 KBS 新聞"
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=RevYuGM_Bx0",
+      "name": "韓國 SBS 新聞"
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=FJfwehhzIhw",
+      "name": "韓國 YTN 新聞"
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=CJVBX7KI5nU",
+      "name": "韓國 阿里郎 新聞"
     },
     {
       "url": "https://www.youtube.com/watch?v=m_dhMSvUCIc",
@@ -179,7 +199,15 @@
    },
    {
       "url": "https://www.youtube.com/watch?v=91PfFoqvuUk",
-      "name": "桃園機場即時影像"
+      "name": "桃園機場 即時影像"
+   },
+   {
+      "url": "https://www.youtube.com/watch?v=wWEnxWA7nnY",
+      "name": "桃園機場 北跑道觀景台即時影像"
+   },
+   {
+      "url": "https://www.youtube.com/watch?v=y3_x8el5ZJY",
+      "name": "桃園機場 南跑道觀景台即時影像"
    }
   ]
 }
