@@ -206,11 +206,6 @@
       "name": "桃園機場 北跑道觀景台即時影像"
    },
    {
-      "url": "https://www.4gtv.tv/channel/4gtv-4gtv039?set=1&ch=1148",
-      "name": "TTT",
-      "header": "Referer: https://www.4gtv.tv/"
-    },
-   {
       "url": "https://www.youtube.com/watch?v=y3_x8el5ZJY",
       "name": "桃園機場 南跑道觀景台即時影像"
    }
