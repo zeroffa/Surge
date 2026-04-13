@@ -208,6 +208,18 @@
    {
       "url": "https://www.youtube.com/watch?v=y3_x8el5ZJY",
       "name": "桃園機場 南跑道觀景台即時影像"
+   },
+   {
+      "url": "https://www.youtube.com/@Baishatun-Mazu/live",
+      "name": "官方-白沙屯拱天宮"
+   },
+   {
+      "url": "https://www.youtube.com/@%E8%8B%97%E6%A0%97%E5%BE%8C%E9%BE%8D%E5%B1%B1%E9%82%8A%E5%AA%BD%E7%A5%96/live",
+      "name": "官方-山邊媽祖"
+   },
+   {
+      "url": "https://www.youtube.com/@baishatun_tv/live",
+      "name": "白沙屯媽祖網路電視台"
    }
   ]
 }
