@@ -1,5 +1,5 @@
 #!name=BAN SITE LISTS
-#!desc=禁止連線網站列表 v20251214.01
+#!desc=禁止連線網站列表 v2026042.01
 
 #! line
 #! DOMAIN-SUFFIX,lan.line.me
@@ -94,7 +94,7 @@ DOMAIN-SUFFIX,white.ish.instagram.com
 DOMAIN-SUFFIX,appledaily.com.tw
 
 #! 抖音
-DOMAIN-SUFFIX,tiktok.com
+#DOMAIN-SUFFIX,tiktok.com
 
 #! ???
 DOMAIN-SUFFIX,convection.cn
