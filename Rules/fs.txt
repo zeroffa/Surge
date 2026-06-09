@@ -1,2 +1,53 @@
 #!name=Financial Services
 #!desc=金融服務網址 v20260607.01
+
+#! 三竹資訊
+DOMAIN-SUFFIX,mitake.com.tw
+
+#! 凱基證券
+DOMAIN-SUFFIX,kgi.com.tw
+DOMAIN-SUFFIX,kgieworld.com.tw
+DOMAIN-SUFFIX,kgif.com.tw
+
+#! 永豐金證券
+DOMAIN-SUFFIX,sinopac.com
+DOMAIN-SUFFIX,sinotrade.com.tw
+
+#! 元大證券
+DOMAIN-SUFFIX,yuanta.com.tw
+DOMAIN-SUFFIX,yuantafutures.com.tw
+
+#! 富邦證券
+DOMAIN-SUFFIX,fbs.com.tw
+
+#! 國泰綜合證券
+DOMAIN-SUFFIX,cathaysec.com.tw
+
+#! 群益金鼎證券
+DOMAIN-SUFFIX,capital.com.tw
+
+#! 統一證券
+DOMAIN-SUFFIX,pscnet.com.tw
+
+#! 元富證券
+DOMAIN-SUFFIX,masterlink.com.tw
+
+#! 華南永昌證券
+DOMAIN-SUFFIX,entrust.com.tw
+
+#! 兆豐證券
+DOMAIN-SUFFIX,megasec.com.tw
+
+#! 台新證券
+DOMAIN-SUFFIX,tssco.com.tw
+
+#! 玉山證券
+DOMAIN-SUFFIX,esunsec.com.tw
+
+#! 新光證券
+DOMAIN-SUFFIX,skis.com.tw
+DOMAIN-SUFFIX,sk88.com.tw
+
+#! 中國信託綜合證券
+DOMAIN-SUFFIX,ctbcsec.com
+DOMAIN-SUFFIX,win168.com.tw
