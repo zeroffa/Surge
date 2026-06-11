@@ -1,53 +1,213 @@
 #!name=Financial Services
-#!desc=金融服務網址 v20260607.01
+#!desc=金融服務網址 v20260611.01
 
-#! 三竹資訊
+#! 004 臺灣銀行
+DOMAIN-SUFFIX,bot.com.tw
+
+#! 005 土地銀行
+DOMAIN-SUFFIX,landbank.com.tw
+
+#! 006 合庫商銀
+DOMAIN-SUFFIX,tcb-bank.com.tw
+
+#! 007 第一銀行
+DOMAIN-SUFFIX,firstbank.com.tw
+
+#! 008 華南銀行
+DOMAIN-SUFFIX,hncb.com.tw
+
+#! 009 彰化銀行
+DOMAIN-SUFFIX,bankchb.com
+
+#! 011 上海銀行
+DOMAIN-SUFFIX,scsb.com.tw
+
+#! 012 台北富邦
+DOMAIN-SUFFIX,fubon.com
+DOMAIN-SUFFIX,taipeifubon.com.tw
+
+#! 013 國泰世華
+DOMAIN-SUFFIX,cathaybk.com.tw
+DOMAIN-SUFFIX,cathay-united.com.tw
+
+#! 016 高雄銀行
+DOMAIN-SUFFIX,bok.com.tw
+
+#! 017 兆豐商銀
+DOMAIN-SUFFIX,megabank.com.tw
+
+#! 020 瑞穗銀行
+DOMAIN-SUFFIX,mizuho-bank.co.jp
+
+#! 021 花旗(台灣)銀行
+DOMAIN-SUFFIX,citibank.com.tw
+
+#! 048 王道銀行
+DOMAIN-SUFFIX,o-bank.com
+
+#! 050 臺灣企銀
+DOMAIN-SUFFIX,tbb.com.tw
+
+#! 052 渣打商銀
+DOMAIN-SUFFIX,sc.com
+
+#! 053 台中銀行
+DOMAIN-SUFFIX,tcbbank.com.tw
+
+#! 054 京城商銀
+DOMAIN-SUFFIX,ktb.com.tw
+
+#! 075 東亞銀行
+DOMAIN-SUFFIX,hkbea.com.tw
+
+#! 081 滙豐(台灣)銀行
+DOMAIN-SUFFIX,hsbc.com.tw
+
+#! 082 巴黎銀行
+DOMAIN-SUFFIX,bnpparibas.com.tw
+
+#! 101 瑞興銀行
+DOMAIN-SUFFIX,banktaipei.com.tw
+
+#! 102 華泰銀行
+DOMAIN-SUFFIX,htbank.com.tw
+
+#! 103 臺灣新光商銀
+DOMAIN-SUFFIX,skbank.com.tw
+
+#! 108 陽信銀行
+DOMAIN-SUFFIX,sunnybank.com.tw
+
+#! 118 板信銀行
+DOMAIN-SUFFIX,bop.com.tw
+
+#! 147 三信銀行
+DOMAIN-SUFFIX,ttbb.com.tw
+
+#! 387 連加支付
+DOMAIN-SUFFIX,line-pay.com
+
+#! 388 全盈支付
+DOMAIN-SUFFIX,pluspay.com.tw
+
+#! 389 全支付
+DOMAIN-SUFFIX,allpay.com.tw
+
+#! 390 悠遊卡
+DOMAIN-SUFFIX,easycard.com.tw
+
+#! 391 一卡通
+DOMAIN-SUFFIX,i-pass.com.tw
+
+#! 392 愛金卡
+DOMAIN-SUFFIX,icash.com.tw
+
+#! 395 橘子支付
+DOMAIN-SUFFIX,gamapay.com.tw
+
+#! 396 街口支付
+DOMAIN-SUFFIX,jkopay.com
+
+#! 397 歐付寶
+DOMAIN-SUFFIX,opay.tw
+
+#! 398 簡單付
+DOMAIN-SUFFIX,ezpay.com.tw
+
+#! 700 中華郵政
+DOMAIN-SUFFIX,post.gov.tw
+
+#! 803 聯邦銀行
+DOMAIN-SUFFIX,ubot.com.tw
+
+#! 805 遠東銀行
+DOMAIN-SUFFIX,feib.com.tw
+
+#! 806 元大銀行
+DOMAIN-SUFFIX,yuanta.com.tw
+
+#! 807 永豐銀行
+DOMAIN-SUFFIX,sinopac.com
+
+#! 808 玉山銀行
+DOMAIN-SUFFIX,esunbank.com.tw
+
+#! 809 凱基銀行
+DOMAIN-SUFFIX,kgibank.com.tw
+
+#! 810 星展(台灣)銀行
+DOMAIN-SUFFIX,dbs.com.tw
+
+#! 812 台新銀行
+DOMAIN-SUFFIX,taishinbank.com.tw
+DOMAIN-SUFFIX,richart.tw
+
+#! 816 安泰銀行
+DOMAIN-SUFFIX,entie.com.tw
+
+#! 822 中國信託
+DOMAIN-SUFFIX,ctbcbank.com
+
+#! 823 將來銀行
+DOMAIN-SUFFIX,nextbank.com.tw
+
+#! 824 連線銀行
+DOMAIN-SUFFIX,linebank.com.tw
+
+#! 826 樂天銀行
+DOMAIN-SUFFIX,rakuten-bank.com.tw
+
+#! 證券 - 三竹資訊
 DOMAIN-SUFFIX,mitake.com.tw
 
-#! 凱基證券
+#! 證券 - 凱基證券
 DOMAIN-SUFFIX,kgi.com.tw
 DOMAIN-SUFFIX,kgieworld.com.tw
 DOMAIN-SUFFIX,kgif.com.tw
 
-#! 永豐金證券
-DOMAIN-SUFFIX,sinopac.com
+#! 證券 - 永豐金證券
 DOMAIN-SUFFIX,sinotrade.com.tw
 
-#! 元大證券
+#! 證券 - 元大證券
 DOMAIN-SUFFIX,yuanta.com.tw
 DOMAIN-SUFFIX,yuantafutures.com.tw
 
-#! 富邦證券
+#! 證券 - 富邦證券
 DOMAIN-SUFFIX,fbs.com.tw
 
-#! 國泰綜合證券
+#! 證券 - 國泰綜合證券
 DOMAIN-SUFFIX,cathaysec.com.tw
 
-#! 群益金鼎證券
+#! 證券 - 群益金鼎證券
 DOMAIN-SUFFIX,capital.com.tw
 
-#! 統一證券
+#! 證券 - 統一證券
 DOMAIN-SUFFIX,pscnet.com.tw
 
-#! 元富證券
+#! 證券 - 元富證券
 DOMAIN-SUFFIX,masterlink.com.tw
 
-#! 華南永昌證券
+#! 證券 - 華南永昌證券
 DOMAIN-SUFFIX,entrust.com.tw
 
-#! 兆豐證券
+#! 證券 - 兆豐證券
 DOMAIN-SUFFIX,megasec.com.tw
 
-#! 台新證券
+#! 證券 - 台新證券
 DOMAIN-SUFFIX,tssco.com.tw
 
-#! 玉山證券
+#! 證券 - 玉山證券
 DOMAIN-SUFFIX,esunsec.com.tw
 
-#! 新光證券
+#! 證券 - 新光證券
 DOMAIN-SUFFIX,skis.com.tw
 DOMAIN-SUFFIX,sk88.com.tw
 
-#! 中國信託綜合證券
+#! 證券 - 中國信託綜合證券
 DOMAIN-SUFFIX,ctbcsec.com
 DOMAIN-SUFFIX,win168.com.tw
+
+#! 金融基礎服務
+DOMAIN-SUFFIX,taiwanpay.com.tw
+DOMAIN-SUFFIX,fisc.com.tw
+DOMAIN-SUFFIX,fisc.tw
