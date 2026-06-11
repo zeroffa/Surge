@@ -1,5 +1,5 @@
-#!name=JAPAN VPS connection
-#!desc=日本 VPS 連線v20250710.01
+#!name=JAPAN DOMAIN 
+#!desc=日本網域 v20260611.01
 
 #! Tver
 DOMAIN-SUFFIX,brightcove.com
@@ -43,3 +43,6 @@ DOMAIN-SUFFIX,family.co.jp
 #! DOMAIN-SUFFIX,yodobashi.com
 DOMAIN-SUFFIX,yamada-denki.jp
 DOMAIN-SUFFIX,edion.co.jp
+
+#! 拉麵資料庫
+DOMAIN-SUFFIX,ramendb.supleks.jp
