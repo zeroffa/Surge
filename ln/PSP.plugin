@@ -1,0 +1,13 @@
+#!name=P購簽到 IN LOON ref.jkgtw
+#!desc=每日自動 PChome App 簽到；預設10點到11點的00-05之間每日隨機一次。請先手動開啟 app 簽到頁或手動簽到時自動擷取 Cookie。v20260709.01 ref.jkgtw
+#!system=ios
+
+[Script]
+# 獲取 Cookie (HTTP Request)
+http-request ^https:\/\/ecapi\.pchome\.com\.tw\/fsapi\/marketing\/signingift\/v1\/(activity|signin) script-path=https://raw.githubusercontent.com/jkgtw/Surge/refs/heads/master/JS/pchome_cookie.js, requires-body=false, timeout=5, tag=PChome Cookie
+
+# 定時簽到 (Cron)
+cron "0-5 10,11 * * *" script-path=https://raw.githubusercontent.com/jkgtw/Surge/refs/heads/master/JS/pchome_signin.js, timeout=20, tag=PChome Signin
+
+[MITM]
+hostname = ecapi.pchome.com.tw
