@@ -1,0 +1,13 @@
+#!name=PChome 簽到
+#!desc=簽到；每日 0:00~0:30 之間隨機一次。
+#!system=ios
+
+[Script]
+# 獲取 Cookie (HTTP Request)
+http-request ^https:\/\/ecapi\.pchome\.com\.tw\/fsapi\/marketing\/signingift\/v1\/(activity|signin) script-path=https://raw.githubusercontent.com/jkgtw/Surge/refs/heads/master/JS/pchome_cookie.js, requires-body=false, timeout=5, tag=PChome Cookie
+
+# 定時簽到 (Cron) - 設定在每天 0 點整觸發，由腳本內控 0-30 分隨機
+cron "0 0 * * *" script-path=https://raw.githubusercontent.com/your_name/pchome_signin_loon.js, timeout=30, tag=PChome Signin
+
+[MITM]
+hostname = ecapi.pchome.com.tw
