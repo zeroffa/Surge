@@ -1,13 +1,15 @@
-#!name=🧧 PChome 每日簽到 Ver.L 20260721.01
-#!desc=每日自動 PChome App 簽到；每日 0:00~0:20 之間隨機一次。請先手動開啟 app 簽到頁或手動簽到時自動擷取 Cookie。v20260709.01 Ref.jkgtw
+#!name=🧧 PChome 每日簽到 IN Loon REF.JKGTW
+#!desc=每日自動 PChome App 簽到；預設 08:01~08:05 之間每日隨機一次。請先手動開啟 app 簽到頁或手動簽到時自動擷取 Cookie。v20260814.01
 #!system=ios
 
-[Script]
-# 1. 攔截 Cookie（通用原作者的 cookie 腳本）
-http-request ^https:\/\/ecapi\.pchome\.com\.tw\/fsapi\/marketing\/signingift\/v1\/(activity|signin) script-path=https://raw.githubusercontent.com/jkgtw/Surge/refs/heads/master/JS/pchome_cookie.js, requires-body=false, timeout=5, tag=PChome Cookie
+[Argument]
+cron = input,"1-5 8 * * *",tag=執行時間,desc=Cron 表達式
 
-# 2. 定時簽到（每分鐘觸發，交由 PDS.js 內部在 0:00~0:20 隨機挑選執行）
-cron "* 0 * * *" script-path=https://raw.githubusercontent.com/zeroffa/Surge/refs/heads/master/ln/PDS.js, timeout=20, tag=PChome Signin
+[Script]
+
+request if ${url} ~= /^https:\/\/ecapi\.pchome\.com\.tw\/fsapi\/marketing\/signingift\/v1\/(activity|signin)/i then script("https://raw.githubusercontent.com/jkgtw/Surge/refs/heads/master/JS/pchome_cookie.js") with tag="PChome Cookie", timeout=5, debug=false, requires_body=false
+
+cron ${cron} then script("https://github.com/zeroffa/Surge/raw/refs/heads/master/ln/PDS.js", {${cron}}) with tag="PChome Signin", timeout=20, debug=false
 
 [MITM]
 hostname = ecapi.pchome.com.tw
