@@ -3,13 +3,12 @@
 #!system=ios
 
 [Argument]
-cron = input,"1-5 8 * * *",tag=執行時間,desc=Cron 表達式
+cron = input,"1-5 8 * * *",tag=執行時間,desc=每日執行時間
 
 [Script]
+http-request ^https:\/\/ecapi\.pchome\.com\.tw\/fsapi\/marketing\/signingift\/v1\/(activity|signin) script-path=https://raw.githubusercontent.com/jkgtw/Surge/refs/heads/master/JS/pchome_cookie.js,requires-body=false,timeout=5,debug=false,tag=PChome Cookie,argument=[{cron}]
 
-request if ${url} ~= /^https:\/\/ecapi\.pchome\.com\.tw\/fsapi\/marketing\/signingift\/v1\/(activity|signin)/i then script("https://raw.githubusercontent.com/jkgtw/Surge/refs/heads/master/JS/pchome_cookie.js") with tag="PChome Cookie", timeout=5, debug=false, requires_body=false
-
-cron ${cron} then script("https://github.com/zeroffa/Surge/raw/refs/heads/master/ln/PDS.js", {${cron}}) with tag="PChome Signin", timeout=20, debug=false
+cron {cron} script-path=https://raw.githubusercontent.com/jkgtw/Surge/refs/heads/master/JS/pchome_signin.js,timeout=20,debug=false,tag=PChome Signin,argument=[{cron}]
 
 [MITM]
 hostname = ecapi.pchome.com.tw
