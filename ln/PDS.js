@@ -1,31 +1,63 @@
 /*
  * Surge / Loon - PChome Daily Signin
  *
+ * Version: v20260829.02
+ *
+ * Compatible:
+ *   - Surge
+ *   - Loon 3.5.0 (975)
+ *
+ * Changes:
+ *   v20260829.02
+ *   1. Support Surge $cronexp
+ *   2. Support Loon $argument.cron
+ *   3. Fix random cron gate logic
+ *      - Prevent execution when current minute is after target minute
+ *      - Correctly verify the configured cron hour
+ *
  * Flow:
- *   0. If cron minute is a range/list, pick one random minute per day and run only at that minute.
- *   1. Read stored Cookie captured from PChome App request.
- *   2. GET current activity.
- *   3. Stop early if activity is BUDGETS_FULL.
- *   4. Pick today's gift_id by activity start date + elapsed days.
- *   5. POST signin with { activity_id, gift_id }.
+ *   0. If cron minute is a range/list, pick one random minute per day.
+ *   1. Run only when current time reaches today's selected minute.
+ *   2. Read stored Cookie.
+ *   3. GET current activity.
+ *   4. Stop if activity status is BUDGETS_FULL.
+ *   5. Calculate today's gift_id.
+ *   6. POST signin.
  *
  * Known response:
- *   Activity current_activity_status = BUDGETS_FULL  => 簽到名額已滿
- *   Signin {"status":"success"}                       => 簽到成功
- *   Signin {"status":"400-004"}                      => 今日已簽到
+ *   BUDGETS_FULL  => 簽到名額已滿
+ *   success       => 簽到成功
+ *   400-004       => 今日已簽到
  */
 
-const ACTIVITY_URL = 'https://ecapi.pchome.com.tw/fsapi/marketing/signingift/v1/activity';
-const SIGNIN_URL = 'https://ecapi.pchome.com.tw/fsapi/marketing/signingift/v1/signin';
+const SCRIPT_VERSION = 'v20260829.02';
 
-const KEY_COOKIE = 'pchome.signin.cookie';
-const KEY_UA = 'pchome.signin.ua';
-const KEY_LAST_CAPTURE = 'pchome.signin.last_capture';
-const KEY_LAST_RESULT = 'pchome.signin.last_result';
-const KEY_RANDOM_PLAN = 'pchome.signin.random_plan';
-const KEY_RANDOM_LAST_RUN = 'pchome.signin.random_last_run';
+const ACTIVITY_URL =
+  'https://ecapi.pchome.com.tw/fsapi/marketing/signingift/v1/activity';
 
-const DEFAULT_UA = 'Mozilla/5.0 (iPhone; CPU iPhone OS 18_7 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) PChome_APP_ios_4.16.5';
+const SIGNIN_URL =
+  'https://ecapi.pchome.com.tw/fsapi/marketing/signingift/v1/signin';
+
+const KEY_COOKIE =
+  'pchome.signin.cookie';
+
+const KEY_UA =
+  'pchome.signin.ua';
+
+const KEY_LAST_CAPTURE =
+  'pchome.signin.last_capture';
+
+const KEY_LAST_RESULT =
+  'pchome.signin.last_result';
+
+const KEY_RANDOM_PLAN =
+  'pchome.signin.random_plan';
+
+const KEY_RANDOM_LAST_RUN =
+  'pchome.signin.random_last_run';
+
+const DEFAULT_UA =
+  'Mozilla/5.0 (iPhone; CPU iPhone OS 18_7 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) PChome_APP_ios_4.16.5';
 
 const ACTIVITY_STATUS_TEXT = {
   IN_PROGRESS: '活動進行中',
@@ -37,76 +69,130 @@ function done() {
 }
 
 function nowText() {
-  return new Date().toLocaleString('zh-TW', { hour12: false });
-}
-
-function log(...args) {
-  console.log(
-    `[PChome Signin][${nowText()}] ${
-      args
-        .filter(v => v !== undefined && v !== null && v !== '')
-        .join(' ')
-    }`
+  return new Date().toLocaleString(
+    'zh-TW',
+    {
+      hour12: false,
+    }
   );
 }
 
-function notify(title, subtitle, body) {
-  if (typeof $notification !== 'undefined') {
+function log(...args) {
+  const text = args
+    .filter(
+      v =>
+        v !== undefined &&
+        v !== null &&
+        v !== ''
+    )
+    .join(' ');
+
+  console.log(
+    `[PChome Signin][${nowText()}] ${text}`
+  );
+}
+
+function notify(
+  title,
+  subtitle = '',
+  body = ''
+) {
+  if (
+    typeof $notification !==
+    'undefined'
+  ) {
     $notification.post(
       title,
-      subtitle || '',
-      body || ''
+      subtitle,
+      body
     );
   }
 }
 
 function httpGet(options) {
-  return new Promise((resolve, reject) => {
-    $httpClient.get(
-      options,
-      (err, resp, data) => {
-        if (err) return reject(err);
+  return new Promise(
+    (resolve, reject) => {
+      $httpClient.get(
+        options,
+        (
+          err,
+          resp,
+          data
+        ) => {
+          if (err) {
+            return reject(err);
+          }
 
-        resolve({
-          resp: resp || {},
-          data,
-        });
-      }
-    );
-  });
+          resolve({
+            resp: resp || {},
+            data,
+          });
+        }
+      );
+    }
+  );
 }
 
 function httpPost(options) {
-  return new Promise((resolve, reject) => {
-    $httpClient.post(
-      options,
-      (err, resp, data) => {
-        if (err) return reject(err);
+  return new Promise(
+    (resolve, reject) => {
+      $httpClient.post(
+        options,
+        (
+          err,
+          resp,
+          data
+        ) => {
+          if (err) {
+            return reject(err);
+          }
 
-        resolve({
-          resp: resp || {},
-          data,
-        });
-      }
-    );
-  });
+          resolve({
+            resp: resp || {},
+            data,
+          });
+        }
+      );
+    }
+  );
 }
 
-function baseHeaders(cookie, ua) {
+function baseHeaders(
+  cookie,
+  ua
+) {
   return {
-    Accept: 'application/json, text/plain, */*',
-    'Content-Type': 'application/json',
-    Origin: 'https://24h.pchome.com.tw',
-    Referer: 'https://24h.pchome.com.tw/',
-    'User-Agent': ua || DEFAULT_UA,
-    'Accept-Language': 'zh-TW,zh-Hant;q=0.9',
-    Cookie: cookie,
+    Accept:
+      'application/json, text/plain, */*',
+
+    'Content-Type':
+      'application/json',
+
+    Origin:
+      'https://24h.pchome.com.tw',
+
+    Referer:
+      'https://24h.pchome.com.tw/',
+
+    'User-Agent':
+      ua || DEFAULT_UA,
+
+    'Accept-Language':
+      'zh-TW,zh-Hant;q=0.9',
+
+    Cookie:
+      cookie,
   };
 }
 
-function parseJson(text, label) {
+function parseJson(
+  text,
+  label
+) {
   try {
-    return JSON.parse(text || '{}');
+    return JSON.parse(
+      text || '{}'
+    );
   } catch (e) {
     throw new Error(
       `${label} JSON 解析失敗：${String(
@@ -116,23 +202,40 @@ function parseJson(text, label) {
   }
 }
 
-function httpStatus(resp) {
-  return Number(
-    resp &&
-    (resp.status || resp.statusCode)
-  ) || 0;
+function httpStatus(
+  resp
+) {
+  return (
+    Number(
+      resp &&
+        (
+          resp.status ||
+          resp.statusCode
+        )
+    ) || 0
+  );
 }
 
-function briefJson(obj, len = 300) {
+function briefJson(
+  obj,
+  len = 300
+) {
   try {
-    return JSON.stringify(obj).slice(0, len);
+    return JSON.stringify(
+      obj
+    ).slice(0, len);
   } catch (e) {
-    return String(obj).slice(0, len);
+    return String(
+      obj
+    ).slice(0, len);
   }
 }
 
 function statusText(obj) {
-  if (!obj || typeof obj !== 'object') {
+  if (
+    !obj ||
+    typeof obj !== 'object'
+  ) {
     return '';
   }
 
@@ -145,7 +248,9 @@ function statusText(obj) {
   );
 }
 
-function normalizeActivity(activity) {
+function normalizeActivity(
+  activity
+) {
   if (
     !activity ||
     !activity.current
@@ -196,8 +301,12 @@ function normalizeActivity(activity) {
   };
 }
 
-function todayGift(activityInfo) {
-  if (!activityInfo.activity_id) {
+function todayGift(
+  activityInfo
+) {
+  if (
+    !activityInfo.activity_id
+  ) {
     throw new Error(
       '找不到 activity_id'
     );
@@ -276,7 +385,8 @@ function todayGift(activityInfo) {
 
   const gift =
     activityInfo.gifts.find(
-      x => Number(x.day) === day
+      x =>
+        Number(x.day) === day
     ) ||
     activityInfo.gifts[
       day - 1
@@ -314,7 +424,12 @@ function todayGift(activityInfo) {
   };
 }
 
-function writeResult(record) {
+/*
+ * 儲存最後一次簽到結果
+ */
+function writeResult(
+  record
+) {
   $persistentStore.write(
     JSON.stringify(record),
     KEY_LAST_RESULT
@@ -327,18 +442,24 @@ function writeResult(record) {
  * Surge:
  *   $cronexp
  *
- * Loon:
- *   Plugin [Argument]
+ * Loon 3.5.0:
+ *   [Argument]
+ *   cron = input,"1-5 8 * * *"
+ *
  *   argument=[{cron}]
  *
- * Loon 取得：
+ *   JS:
  *   $argument.cron
  */
 function getCronExpression() {
+
+  // -------------------------
   // Surge
+  // -------------------------
   try {
     if (
-      typeof $cronexp !== 'undefined' &&
+      typeof $cronexp !==
+        'undefined' &&
       $cronexp
     ) {
       return String(
@@ -347,13 +468,17 @@ function getCronExpression() {
     }
   } catch (e) {}
 
+  // -------------------------
   // Loon
+  // -------------------------
   try {
     if (
-      typeof $argument !== 'undefined' &&
+      typeof $argument !==
+        'undefined' &&
       $argument
     ) {
-      // Loon Plugin Object
+
+      // Object
       if (
         typeof $argument ===
           'object' &&
@@ -364,18 +489,18 @@ function getCronExpression() {
         ).trim();
       }
 
-      // 萬一 Loon 以 String 傳入
+      // String fallback
       if (
         typeof $argument ===
           'string'
       ) {
-        const arg =
+        const value =
           String(
             $argument
           ).trim();
 
-        if (arg) {
-          return arg;
+        if (value) {
+          return value;
         }
       }
     }
@@ -403,7 +528,9 @@ function localDateKey(
   return `${y}-${m}-${day}`;
 }
 
-function parseMinuteField(field) {
+function parseMinuteField(
+  field
+) {
   const text =
     String(
       field || ''
@@ -420,15 +547,17 @@ function parseMinuteField(field) {
     new Set();
 
   function addMinute(n) {
-    const v =
+    const value =
       Number(n);
 
     if (
-      Number.isInteger(v) &&
-      v >= 0 &&
-      v <= 59
+      Number.isInteger(
+        value
+      ) &&
+      value >= 0 &&
+      value <= 59
     ) {
-      minutes.add(v);
+      minutes.add(value);
     }
   }
 
@@ -439,8 +568,11 @@ function parseMinuteField(field) {
     const part =
       partRaw.trim();
 
-    if (!part) continue;
+    if (!part) {
+      continue;
+    }
 
+    // 單一分鐘
     if (
       /^\d+$/.test(part)
     ) {
@@ -448,6 +580,7 @@ function parseMinuteField(field) {
       continue;
     }
 
+    // 範圍，例如 1-5
     const rangeMatch =
       part.match(
         /^(\d+)-(\d+)$/
@@ -487,6 +620,7 @@ function parseMinuteField(field) {
       continue;
     }
 
+    // */5
     const stepMatch =
       part.match(
         /^\*\/(\d+)$/
@@ -524,7 +658,9 @@ function parseMinuteField(field) {
     : null;
 }
 
-function pickRandom(list) {
+function pickRandom(
+  list
+) {
   return list[
     Math.floor(
       Math.random() *
@@ -533,7 +669,9 @@ function pickRandom(list) {
   ];
 }
 
-function readJsonStore(key) {
+function readJsonStore(
+  key
+) {
   try {
     const raw =
       $persistentStore.read(
@@ -558,13 +696,37 @@ function writeJsonStore(
   );
 }
 
+/*
+ * 每日隨機 Cron Gate
+ *
+ * 例如：
+ *
+ * Cron:
+ *   1-5 8 * * *
+ *
+ * 每天只選一個：
+ *   08:01
+ *   08:02
+ *   08:03
+ *   08:04
+ *   08:05
+ *
+ * 並且：
+ *
+ * 08:01 → 若目標 08:04 → 不執行
+ * 08:02 → 不執行
+ * 08:03 → 不執行
+ * 08:04 → 執行
+ * 08:05 → 已超過 → 不執行
+ */
 function randomCronGate() {
+
   const cron =
     getCronExpression();
 
   if (!cron) {
     log(
-      '未取得 Cron 表達式，略過隨機排程判斷，直接執行'
+      '未取得 Cron 表達式，直接執行'
     );
 
     return true;
@@ -586,6 +748,10 @@ function randomCronGate() {
       minuteField
     );
 
+  /*
+   * 沒有分鐘範圍：
+   * 直接執行
+   */
   if (
     !candidates ||
     candidates.length <= 1
@@ -604,33 +770,75 @@ function randomCronGate() {
   const dateKey =
     localDateKey(now);
 
-  const planKey =
-    `${dateKey}|${minuteField}|${hourField}`;
-
   const currentMinute =
     now.getMinutes();
 
   const currentHour =
     now.getHours();
 
+  /*
+   * 檢查 Cron 小時
+   *
+   * 這裡只需要支援目前使用的：
+   * 8
+   *
+   * 如果是 *，則任何小時都允許。
+   */
+  const hourMatches =
+    hourField === '' ||
+    hourField === '*'
+      ? true
+      : String(
+          currentHour
+        ) ===
+        String(
+          hourField
+        );
+
+  if (!hourMatches) {
+    log(
+      '目前不在 Cron 指定小時，略過：',
+      `目前=${String(
+        currentHour
+      ).padStart(2, '0')}:${String(
+        currentMinute
+      ).padStart(2, '0')}`,
+      `Cron=${cron}`
+    );
+
+    return false;
+  }
+
+  const planKey =
+    `${dateKey}|${minuteField}|${hourField}`;
+
   let plan =
     readJsonStore(
       KEY_RANDOM_PLAN
     );
 
+  /*
+   * 今天尚未建立隨機時間
+   */
   if (
     !plan ||
-    plan.key !== planKey ||
+    plan.key !==
+      planKey ||
     !candidates.includes(
-      Number(plan.minute)
+      Number(
+        plan.minute
+      )
     )
   ) {
     plan = {
-      key: planKey,
+      key:
+        planKey,
 
-      date: dateKey,
+      date:
+        dateKey,
 
-      cron,
+      cron:
+        cron,
 
       minute_field:
         minuteField,
@@ -654,16 +862,46 @@ function randomCronGate() {
 
     log(
       '建立今日隨機簽到時間：',
-      `${String(currentHour).padStart(2, '0')}:${String(plan.minute).padStart(2, '0')}`,
-      `候選分鐘=${candidates.join(',')}`
+      `${String(
+        currentHour
+      ).padStart(
+        2,
+        '0'
+      )}:${String(
+        plan.minute
+      ).padStart(
+        2,
+        '0'
+      )}`,
+      `候選分鐘=${candidates.join(
+        ','
+      )}`
     );
   } else {
     log(
       '今日隨機簽到時間：',
-      `${String(currentHour).padStart(2, '0')}:${String(plan.minute).padStart(2, '0')}`
+      `${String(
+        currentHour
+      ).padStart(
+        2,
+        '0'
+      )}:${String(
+        plan.minute
+      ).padStart(
+        2,
+        '0'
+      )}`
     );
   }
 
+  const targetMinute =
+    Number(
+      plan.minute
+    );
+
+  /*
+   * 今天已經執行過
+   */
   const lastRun =
     readJsonStore(
       KEY_RANDOM_LAST_RUN
@@ -676,62 +914,116 @@ function randomCronGate() {
     lastRun.done
   ) {
     log(
-      '今日此 cron 視窗已執行過，略過：',
-      lastRun.executed_at || ''
+      '今日此 Cron 視窗已執行過，略過：',
+      lastRun.executed_at ||
+        ''
     );
 
     return false;
   }
 
-  const targetMinute =
-    Number(
-      plan.minute
-    );
-
+  /*
+   * 尚未到目標分鐘
+   */
   if (
     currentMinute <
-      targetMinute &&
-    candidates.includes(
-      currentMinute
-    )
+    targetMinute
   ) {
     log(
-      '尚未到今日隨機分鐘，略過本次觸發：',
-      `目前=${String(currentHour).padStart(2, '0')}:${String(currentMinute).padStart(2, '0')}`,
-      `目標=${String(currentHour).padStart(2, '0')}:${String(targetMinute).padStart(2, '0')}`
+      '尚未到今日隨機分鐘，略過：',
+      `目前=${String(
+        currentHour
+      ).padStart(
+        2,
+        '0'
+      )}:${String(
+        currentMinute
+      ).padStart(
+        2,
+        '0'
+      )}`,
+      `目標=${String(
+        currentHour
+      ).padStart(
+        2,
+        '0'
+      )}:${String(
+        targetMinute
+      ).padStart(
+        2,
+        '0'
+      )}`
     );
 
     return false;
   }
 
+  /*
+   * 已經超過目標分鐘
+   *
+   * 這就是修正你剛才
+   * 12:58 → 12:04 仍然執行的 Bug。
+   */
   if (
     currentMinute >
-      targetMinute &&
-    candidates.includes(
-      currentMinute
-    )
+    targetMinute
   ) {
     log(
-      '今日隨機分鐘已過但尚未執行，改在本次補執行：',
-      `目前分鐘=${currentMinute}`,
-      `目標分鐘=${targetMinute}`
+      '已超過今日隨機分鐘，略過：',
+      `目前=${String(
+        currentHour
+      ).padStart(
+        2,
+        '0'
+      )}:${String(
+        currentMinute
+      ).padStart(
+        2,
+        '0'
+      )}`,
+      `目標=${String(
+        currentHour
+      ).padStart(
+        2,
+        '0'
+      )}:${String(
+        targetMinute
+      ).padStart(
+        2,
+        '0'
+      )}`
     );
-  } else {
-    log(
-      '到達今日隨機分鐘，開始執行：',
-      `分鐘=${targetMinute}`
-    );
+
+    return false;
   }
 
+  /*
+   * currentMinute === targetMinute
+   */
+  log(
+    '到達今日隨機分鐘，開始執行：',
+    `分鐘=${targetMinute}`
+  );
+
+  /*
+   * 先標記執行
+   * 避免同一分鐘重複觸發。
+   */
   writeJsonStore(
     KEY_RANDOM_LAST_RUN,
     {
-      key: planKey,
-      done: true,
+      key:
+        planKey,
+
+      done:
+        true,
+
       target_minute:
         targetMinute,
+
       executed_minute:
         currentMinute,
+
       executed_at:
         now.toISOString(),
     }
@@ -741,35 +1033,51 @@ function randomCronGate() {
 }
 
 (async () => {
+
   const startedAt =
     new Date();
 
   log(
-    '開始執行每日簽到'
+    `開始執行每日簽到 ${SCRIPT_VERSION}`
   );
 
+  /*
+   * Random Cron Gate
+   */
   if (
     !randomCronGate()
   ) {
     return done();
   }
 
+  /*
+   * 讀取 Cookie
+   */
   const cookie =
     $persistentStore.read(
       KEY_COOKIE
     );
 
+  /*
+   * 讀取 UA
+   */
   const ua =
     $persistentStore.read(
       KEY_UA
-    ) || DEFAULT_UA;
+    ) ||
+    DEFAULT_UA;
 
+  /*
+   * 上次 Cookie 擷取時間
+   */
   const lastCapture =
     $persistentStore.read(
       KEY_LAST_CAPTURE
-    ) || '無紀錄';
+    ) ||
+    '無紀錄';
 
   if (!cookie) {
+
     const msg =
       '尚未擷取 Cookie，請先開啟 PChome App 的每日簽到頁，或手動簽到一次讓 Loon 擷取 Cookie。';
 
@@ -799,6 +1107,10 @@ function randomCronGate() {
     );
 
   try {
+
+    /*
+     * GET Activity
+     */
     log(
       '取得活動資訊：',
       ACTIVITY_URL
@@ -806,10 +1118,17 @@ function randomCronGate() {
 
     const activityRes =
       await httpGet({
-        url: ACTIVITY_URL,
-        headers,
-        timeout: 10,
-        'auto-cookie': false,
+        url:
+          ACTIVITY_URL,
+
+        headers:
+          headers,
+
+        timeout:
+          10,
+
+        'auto-cookie':
+          false,
       });
 
     const activityHttpStatus =
@@ -823,12 +1142,15 @@ function randomCronGate() {
     );
 
     if (
-      activityHttpStatus < 200 ||
-      activityHttpStatus >= 300
+      activityHttpStatus <
+        200 ||
+      activityHttpStatus >=
+        300
     ) {
       throw new Error(
         `活動資訊 HTTP ${activityHttpStatus}：${String(
-          activityRes.data || ''
+          activityRes.data ||
+            ''
         ).slice(0, 200)}`
       );
     }
@@ -866,10 +1188,14 @@ function randomCronGate() {
       activityInfo.gifts.length
     );
 
+    /*
+     * 名額已滿
+     */
     if (
       activityInfo.status ===
       'BUDGETS_FULL'
     ) {
+
       const record = {
         time:
           startedAt.toISOString(),
@@ -904,6 +1230,9 @@ function randomCronGate() {
       return done();
     }
 
+    /*
+     * 取得今日 Gift
+     */
     const gift =
       todayGift(
         activityInfo
@@ -926,6 +1255,9 @@ function randomCronGate() {
         gift.gift_id,
     };
 
+    /*
+     * POST Signin
+     */
     log(
       '送出簽到請求：',
       briefJson(
@@ -935,14 +1267,22 @@ function randomCronGate() {
 
     const signinRes =
       await httpPost({
-        url: SIGNIN_URL,
-        headers,
+        url:
+          SIGNIN_URL,
+
+        headers:
+          headers,
+
         body:
           JSON.stringify(
             bodyObj
           ),
-        timeout: 10,
-        'auto-cookie': false,
+
+        timeout:
+          10,
+
+        'auto-cookie':
+          false,
       });
 
     const signinHttpStatus =
@@ -1003,12 +1343,20 @@ function randomCronGate() {
       record
     );
 
+    /*
+     * 成功
+     */
     if (
-      signinHttpStatus >= 200 &&
-      signinHttpStatus < 300 &&
-      String(result).toLowerCase() ===
+      signinHttpStatus >=
+        200 &&
+      signinHttpStatus <
+        300 &&
+      String(
+        result
+      ).toLowerCase() ===
         'success'
     ) {
+
       log(
         '簽到成功'
       );
@@ -1022,10 +1370,15 @@ function randomCronGate() {
         }`,
         `activity_id: ${gift.activity_id}`
       );
+
+    /*
+     * 今日已簽到
+     */
     } else if (
       String(result) ===
       '400-004'
     ) {
+
       log(
         '今日已簽到，視為完成'
       );
@@ -1035,7 +1388,12 @@ function randomCronGate() {
         '400-004',
         `第 ${gift.day} 天｜activity_id: ${gift.activity_id}`
       );
+
+    /*
+     * 其他結果
+     */
     } else {
+
       log(
         '簽到完成但狀態需確認：',
         result
@@ -1049,7 +1407,9 @@ function randomCronGate() {
         )
       );
     }
+
   } catch (e) {
+
     const msg =
       String(
         e &&
@@ -1060,7 +1420,9 @@ function randomCronGate() {
 
     const code =
       e && e.code
-        ? String(e.code)
+        ? String(
+            e.code
+          )
         : '';
 
     log(
@@ -1076,7 +1438,8 @@ function randomCronGate() {
       result:
         'ERROR',
 
-      code,
+      code:
+        code,
 
       message:
         msg,
@@ -1087,11 +1450,14 @@ function randomCronGate() {
       code,
       msg
     );
+
   } finally {
+
     log(
       '執行結束'
     );
 
     done();
   }
+
 })();
