@@ -8,7 +8,7 @@ cron = input,"1-5 8 * * *",tag=執行時間,desc=每日執行時間
 [Script]
 http-request ^https:\/\/ecapi\.pchome\.com\.tw\/fsapi\/marketing\/signingift\/v1\/(activity|signin) script-path=https://raw.githubusercontent.com/jkgtw/Surge/refs/heads/master/JS/pchome_cookie.js,requires-body=false,timeout=5,debug=false,tag=PChome Cookie,argument=[{cron}]
 
-cron {cron} script-path=https://raw.githubusercontent.com/jkgtw/Surge/refs/heads/master/JS/pchome_signin.js,timeout=20,debug=false,tag=PChome Signin,argument=[{cron}]
+cron {cron} script-path=https://github.com/zeroffa/Surge/raw/refs/heads/master/ln/PDS.js,timeout=20,debug=false,tag=PChome Signin,argument=[{cron}]
 
 [MITM]
 hostname = ecapi.pchome.com.tw
