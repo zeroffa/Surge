@@ -3,7 +3,7 @@
 #!system=ios
 
 [Argument]
-cron = input,"1-5 8 * * *",tag=執行時間,desc=每日執行時間
+cron = input,"1-5 8 * * *"
 
 [Script]
 http-request ^https:\/\/ecapi\.pchome\.com\.tw\/fsapi\/marketing\/signingift\/v1\/(activity|signin) script-path=https://raw.githubusercontent.com/jkgtw/Surge/refs/heads/master/JS/pchome_cookie.js,requires-body=false,timeout=5,debug=false,tag=PChome Cookie
