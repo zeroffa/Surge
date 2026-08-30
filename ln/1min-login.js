@@ -14,142 +14,210 @@
  * 原始版本：
  *   v202509051622
  *
- * 本版本主要針對 Loon 3.5.0 (975) 進行相容性調整。
+ * 本版本主要針對 Loon 3.5.0 (975)
+ * 進行相容性調整。
  *
  * 調整內容：
- *   1. 保留原始 1min.ai 登入流程
- *   2. 保留帳號、密碼參數
+ *   1. 保留原始登入流程
+ *   2. 保留帳號與密碼登入
  *   3. 保留可選 TOTP 雙因素驗證
  *   4. 保留 JWT 持久化儲存
  *   5. 保留 Team / Credit 查詢
  *   6. 保留每日獎勵檢查
- *   7. 將部分 Surge API 用法調整為 Loon API
- *   8. TOTP 函式庫載入方式調整為 Loon $httpClient
- *   9. 增加 Loon 執行日誌與錯誤處理
- *
- * 注意：
- *   本版本為 Loon 相容移植版本，
- *   原始邏輯與 API 設計以 7a6163 的版本為參考。
+ *   7. 支援 Loon 中文參數名稱
+ *   8. TOTP 函式庫下載改用 Loon $httpClient
+ *   9. 不使用 $httpClient timeout 參數
  */
 
 /*
  * ================================
- * 取得參數
+ * 版本資訊
  * ================================
- *
- * Loon 可能傳入：
- *
- *   email=xxx&password=xxx&totp=xxx
- *
- * 也兼容物件形式。
  */
-
-function getArguments() {
-    try {
-        if (
-            typeof $argument === 'object' &&
-            $argument !== null
-        ) {
-            return $argument;
-        }
-
-        const result = {};
-
-        const raw = String(
-            typeof $argument !== 'undefined'
-                ? $argument
-                : ''
-        );
-
-        if (!raw) {
-            return result;
-        }
-
-        const text =
-            raw.charAt(0) === '?'
-                ? raw.slice(1)
-                : raw;
-
-        /*
-         * 解析 URL 編碼參數
-         */
-        text.split('&').forEach(item => {
-            const index = item.indexOf('=');
-
-            if (index < 0) {
-                return;
-            }
-
-            const key =
-                decodeURIComponent(
-                    item.slice(0, index)
-                );
-
-            const value =
-                decodeURIComponent(
-                    item.slice(index + 1)
-                );
-
-            result[key] = value;
-        });
-
-        return result;
-
-    } catch (error) {
-        console.log(
-            '[1min.ai] 解析參數失敗：',
-            String(error)
-        );
-
-        return {};
-    }
-}
-
-const args =
-    getArguments();
-
-const email =
-    args.email ||
-    args.帳號 ||
-    '';
-
-const password =
-    args.password ||
-    args.密碼 ||
-    '';
-
-const totpSecretRaw =
-    args.totp ||
-    args.TOTP金鑰 ||
-    '';
-
-/*
- * 過濾無效 TOTP：
- *
- * 空字串
- * null
- * undefined
- * "null"
- */
-const validTotpSecret =
-    totpSecretRaw &&
-    String(
-        totpSecretRaw
-    ).trim() !== '' &&
-    String(
-        totpSecretRaw
-    ).trim().toLowerCase() !== 'null'
-        ? String(
-            totpSecretRaw
-        ).trim()
-        : null;
 
 const SCRIPT_VERSION =
     'v20260830.01';
 
 /*
  * ================================
- * 基本設定
+ * 取得 Plugin 傳入參數
+ * ================================
+ */
+
+function getArguments() {
+
+    const result = {};
+
+    try {
+
+        if (
+            typeof $argument ===
+                'object' &&
+            $argument !== null
+        ) {
+
+            return $argument;
+        }
+
+        if (
+            typeof $argument ===
+            'undefined'
+        ) {
+
+            return result;
+        }
+
+        const raw =
+            String(
+                $argument
+            ).trim();
+
+        if (!raw) {
+            return result;
+        }
+
+        const query =
+            raw.charAt(0) === '?'
+                ? raw.slice(1)
+                : raw;
+
+        query
+            .split('&')
+            .forEach(item => {
+
+                if (!item) {
+                    return;
+                }
+
+                const index =
+                    item.indexOf('=');
+
+                if (
+                    index < 0
+                ) {
+                    return;
+                }
+
+                try {
+
+                    const key =
+                        decodeURIComponent(
+                            item.slice(
+                                0,
+                                index
+                            )
+                        );
+
+                    const value =
+                        decodeURIComponent(
+                            item.slice(
+                                index + 1
+                            )
+                        );
+
+                    result[key] =
+                        value;
+
+                } catch (error) {
+
+                    console.log(
+                        '[1min.ai] 參數解析失敗：',
+                        String(error)
+                    );
+                }
+            });
+
+    } catch (error) {
+
+        console.log(
+            '[1min.ai] 取得參數失敗：',
+            String(error)
+        );
+    }
+
+    return result;
+}
+
+const params =
+    getArguments();
+
+/*
+ * 同時支援原始英文參數與
+ * Loon Plugin 中文參數。
+ */
+
+const email =
+    params.email ||
+    params.帳號 ||
+    '';
+
+const password =
+    params.password ||
+    params.密碼 ||
+    '';
+
+const totpSecret =
+    params.totp ||
+    params.TOTP金鑰 ||
+    '';
+
+const validTotpSecret =
+    totpSecret &&
+    String(
+        totpSecret
+    ).trim() !== '' &&
+    String(
+        totpSecret
+    ).trim().toLowerCase() !==
+        'null'
+        ? String(
+            totpSecret
+        ).trim()
+        : null;
+
+/*
+ * ================================
+ * 啟動
+ * ================================
+ */
+
+console.log(
+    `[1min.ai] 自動登入 ${SCRIPT_VERSION}`
+);
+
+console.log(
+    '[1min.ai] 參考來源：7a6163/Surge'
+);
+
+/*
+ * ================================
+ * 基本參數檢查
+ * ================================
+ */
+
+if (
+    !email ||
+    !password
+) {
+
+    console.log(
+        '[1min.ai] ❌ 缺少帳號或密碼'
+    );
+
+    $notification.post(
+        '1min 登入',
+        '設定錯誤',
+        '請檢查帳號與密碼參數'
+    );
+
+    $done();
+
+    return;
+}
+
+/*
+ * ================================
+ * JWT 儲存
  * ================================
  */
 
@@ -159,73 +227,13 @@ const JWT_KEY =
 const USER_DATA_KEY =
     `1min_user_${email}`;
 
-const DEVICE_ID_KEY =
-    `1min_device_${email}`;
-
-/*
- * 輸出啟動訊息
- */
-console.log(
-    `[1min.ai] 自動登入 ${SCRIPT_VERSION}`
-);
-
-/*
- * ================================
- * 通知
- * ================================
- */
-
-function notify(
-    title,
-    subtitle = '',
-    body = ''
-) {
-    if (
-        typeof $notification !==
-        'undefined'
-    ) {
-        $notification.post(
-            title,
-            subtitle,
-            body
-        );
-    }
-}
-
-/*
- * ================================
- * 參數檢查
- * ================================
- */
-
-if (
-    !email ||
-    !password
-) {
-    console.log(
-        '[1min.ai] ❌ 缺少帳號或密碼'
-    );
-
-    notify(
-        '1min 登入',
-        '設定錯誤',
-        '請檢查帳號與密碼參數'
-    );
-
-    $done();
-}
-
-/*
- * ================================
- * JWT 儲存管理
- * ================================
- */
-
 function saveJWT(
     token,
     userData
 ) {
+
     try {
+
         $persistentStore.write(
             token,
             JWT_KEY
@@ -248,6 +256,7 @@ function saveJWT(
 }
 
 function loadJWT() {
+
     try {
 
         const token =
@@ -255,31 +264,29 @@ function loadJWT() {
                 JWT_KEY
             );
 
-        const userDataStr =
+        const userData =
             $persistentStore.read(
                 USER_DATA_KEY
             );
 
         if (
             token &&
-            userDataStr
+            userData
         ) {
-
-            const userData =
-                JSON.parse(
-                    userDataStr
-                );
 
             return {
                 token,
-                userData
+                userData:
+                    JSON.parse(
+                        userData
+                    )
             };
         }
 
     } catch (error) {
 
         console.log(
-            '[1min.ai] ❌ 載入 JWT 失敗：',
+            '[1min.ai] ❌ 讀取 JWT 失敗：',
             String(error)
         );
     }
@@ -288,6 +295,7 @@ function loadJWT() {
 }
 
 function clearJWT() {
+
     try {
 
         $persistentStore.write(
@@ -311,103 +319,24 @@ function clearJWT() {
 
 /*
  * ================================
- * 隨機裝置 ID
+ * TOTP 函式庫
  * ================================
- */
-
-function randomHex(
-    length
-) {
-    const chars =
-        '0123456789abcdef';
-
-    let result = '';
-
-    for (
-        let i = 0;
-        i < length;
-        i++
-    ) {
-        result +=
-            chars[
-                Math.floor(
-                    Math.random() *
-                    chars.length
-                )
-            ];
-    }
-
-    return result;
-}
-
-function generateDeviceId() {
-
-    /*
-     * 優先使用已儲存的裝置 ID。
-     *
-     * 這樣每天登入不會一直產生
-     * 全新的裝置識別。
-     */
-    try {
-
-        const old =
-            $persistentStore.read(
-                DEVICE_ID_KEY
-            );
-
-        if (old) {
-            return old;
-        }
-
-    } catch (error) {}
-
-    const part1 =
-        randomHex(16);
-
-    const part2 =
-        randomHex(15);
-
-    const part3 =
-        randomHex(8);
-
-    const part4 =
-        randomHex(6);
-
-    const part5 =
-        randomHex(16);
-
-    const device =
-        `$device:${part1}-${part2}-${part3}-${part4}-${part5}`;
-
-    try {
-
-        $persistentStore.write(
-            device,
-            DEVICE_ID_KEY
-        );
-
-    } catch (error) {}
-
-    return device;
-}
-
-const deviceId =
-    generateDeviceId();
-
-/*
- * ================================
- * TOTP 動態載入
- * ================================
- *
- * 原始 Surge 版使用 fetch()。
- *
- * Loon 版改用 $httpClient.get()
- * 下載 OTPAuth 函式庫。
  */
 
 let OTPAuth = null;
 
-function loadOTPAuth() {
+async function loadOTPAuth() {
+
+    if (OTPAuth) {
+        return OTPAuth;
+    }
+
+    const url =
+        'https://cdn.jsdelivr.net/npm/otpauth@9.4.0/dist/otpauth.umd.min.js';
+
+    console.log(
+        '[1min.ai] 載入 TOTP 函式庫'
+    );
 
     return new Promise(
         (
@@ -415,23 +344,9 @@ function loadOTPAuth() {
             reject
         ) => {
 
-            if (OTPAuth) {
-                resolve(
-                    OTPAuth
-                );
-                return;
-            }
-
-            const url =
-                'https://cdn.jsdelivr.net/npm/otpauth@9.4.0/dist/otpauth.umd.min.js';
-
-            console.log(
-                '[1min.ai] 載入 TOTP 函式庫'
-            );
-
             $httpClient.get(
                 {
-                    url: url,
+                    url,
 
                     headers: {
                         'User-Agent':
@@ -439,10 +354,7 @@ function loadOTPAuth() {
 
                         'Accept':
                             '*/*'
-                    },
-
-                    'auto-cookie':
-                        false
+                    }
                 },
 
                 (
@@ -455,39 +367,36 @@ function loadOTPAuth() {
 
                         console.log(
                             '[1min.ai] ❌ TOTP 函式庫下載失敗：',
-                            String(
-                                error
-                            )
+                            String(error)
                         );
 
-                        reject(
-                            error
-                        );
+                        reject(error);
 
                         return;
                     }
 
                     if (
                         !response ||
-                        Number(
-                            response.status
-                        ) !== 200
+                        response.status !==
+                            200
                     ) {
 
-                        reject(
+                        const err =
                             new Error(
-                                `TOTP 函式庫 HTTP ${response ? response.status : 'null'}`
-                            )
-                        );
+                                `TOTP 函式庫 HTTP ${
+                                    response
+                                        ? response.status
+                                        : 'null'
+                                }`
+                            );
+
+                        reject(err);
 
                         return;
                     }
 
                     try {
 
-                        /*
-                         * 執行 UMD 函式庫。
-                         */
                         eval(
                             String(
                                 data ||
@@ -495,12 +404,9 @@ function loadOTPAuth() {
                             )
                         );
 
-                        /*
-                         * 嘗試從全域環境取得 OTPAuth。
-                         */
                         if (
                             typeof globalThis !==
-                            'undefined' &&
+                                'undefined' &&
                             globalThis.OTPAuth
                         ) {
 
@@ -509,7 +415,7 @@ function loadOTPAuth() {
 
                         } else if (
                             typeof global !==
-                            'undefined' &&
+                                'undefined' &&
                             global.OTPAuth
                         ) {
 
@@ -518,7 +424,7 @@ function loadOTPAuth() {
 
                         } else if (
                             typeof window !==
-                            'undefined' &&
+                                'undefined' &&
                             window.OTPAuth
                         ) {
 
@@ -526,22 +432,7 @@ function loadOTPAuth() {
                                 window.OTPAuth;
                         }
 
-                        /*
-                         * 某些 JavaScript 執行環境
-                         * eval 後可以直接取得變數。
-                         */
-                        if (
-                            !OTPAuth &&
-                            typeof window !==
-                            'undefined'
-                        ) {
-                            OTPAuth =
-                                window.OTPAuth;
-                        }
-
-                        if (
-                            !OTPAuth
-                        ) {
+                        if (!OTPAuth) {
 
                             throw new Error(
                                 '無法取得 OTPAuth'
@@ -560,9 +451,7 @@ function loadOTPAuth() {
 
                         console.log(
                             '[1min.ai] ❌ TOTP 函式庫解析失敗：',
-                            String(
-                                parseError
-                            )
+                            String(parseError)
                         );
 
                         reject(
@@ -574,6 +463,47 @@ function loadOTPAuth() {
         }
     );
 }
+
+/*
+ * ================================
+ * 裝置識別
+ * ================================
+ */
+
+function randomHex(
+    length
+) {
+
+    const chars =
+        '0123456789abcdef';
+
+    let result = '';
+
+    for (
+        let i = 0;
+        i < length;
+        i++
+    ) {
+
+        result +=
+            chars[
+                Math.floor(
+                    Math.random() *
+                    chars.length
+                )
+            ];
+    }
+
+    return result;
+}
+
+function generateDeviceId() {
+
+    return `$device:${randomHex(16)}-${randomHex(15)}-${randomHex(8)}-${randomHex(6)}-${randomHex(16)}`;
+}
+
+const deviceId =
+    generateDeviceId();
 
 /*
  * ================================
@@ -600,7 +530,7 @@ class LoginManager {
     }
 
     /*
-     * 建立 API Headers
+     * 建立 API Headers。
      */
     buildApiHeaders(
         authToken
@@ -632,39 +562,31 @@ class LoginManager {
     }
 
     /*
-     * 驗證已儲存 JWT 是否仍然有效
+     * 驗證已儲存 JWT。
      */
     async validateJWT(
         token,
         userData
     ) {
 
-        const teams =
-            userData &&
-            Array.isArray(
-                userData.teams
-            )
-                ? userData.teams
-                : [];
-
-        const firstTeam =
-            teams[0];
-
-        const teamId =
-            firstTeam &&
-            (
-                firstTeam.teamId ||
-                (
-                    firstTeam.team &&
-                    firstTeam.team.uuid
-                )
-            );
-
-        if (!teamId) {
-            return false;
-        }
-
         try {
+
+            const team =
+                userData &&
+                userData.teams &&
+                userData.teams[0];
+
+            if (!team) {
+                return false;
+            }
+
+            const teamId =
+                team.teamId ||
+                team.team?.uuid;
+
+            if (!teamId) {
+                return false;
+            }
 
             const headers =
                 this.buildApiHeaders(
@@ -677,27 +599,26 @@ class LoginManager {
                     headers
                 );
 
+            /*
+             * 能成功取得 Credit，
+             * 即代表目前 JWT 可以使用。
+             */
             return (
-                Number(credit) >
-                0
+                credit >= 0
             );
 
         } catch (error) {
-
-            console.log(
-                '[1min.ai] 已儲存 JWT 無法使用'
-            );
 
             return false;
         }
     }
 
     /*
-     * 執行登入
+     * 執行登入。
      */
     async performLogin() {
 
-        const loginUrl =
+        const url =
             'https://api.1min.ai/auth/login';
 
         const headers = {
@@ -729,6 +650,7 @@ class LoginManager {
 
         const body =
             JSON.stringify({
+
                 email:
                     this.email,
 
@@ -744,17 +666,11 @@ class LoginManager {
 
                 $httpClient.post(
                     {
-                        url:
-                            loginUrl,
+                        url,
 
-                        headers:
-                            headers,
+                        headers,
 
-                        body:
-                            body,
-
-                        'auto-cookie':
-                            false
+                        body
                     },
 
                     (
@@ -767,27 +683,23 @@ class LoginManager {
 
                             console.log(
                                 '[1min.ai] ❌ 登入請求失敗：',
-                                String(
-                                    error
-                                )
+                                String(error)
                             );
 
-                            notify(
+                            $notification.post(
                                 '1min 登入',
                                 '網路錯誤',
-                                '請檢查網路連線'
+                                String(error)
                             );
 
-                            reject(
-                                error
-                            );
+                            reject(error);
 
                             return;
                         }
 
                         try {
 
-                            const responseData =
+                            const result =
                                 JSON.parse(
                                     data ||
                                     '{}'
@@ -795,9 +707,7 @@ class LoginManager {
 
                             const status =
                                 response
-                                    ? Number(
-                                        response.status
-                                    )
+                                    ? response.status
                                     : 0;
 
                             console.log(
@@ -805,160 +715,139 @@ class LoginManager {
                                 status
                             );
 
-                            /*
-                             * 登入成功
-                             */
                             if (
-                                status ===
-                                    200 &&
-                                responseData.user
+                                status !==
+                                    200 ||
+                                !result.user
                             ) {
 
-                                /*
-                                 * 需要 TOTP
-                                 */
-                                if (
-                                    responseData
-                                        .user
-                                        .mfaRequired
-                                ) {
+                                const message =
+                                    result.message ||
+                                    `HTTP ${status}`;
 
-                                    if (
-                                        this.totpSecret
-                                    ) {
+                                console.log(
+                                    '[1min.ai] ❌ 登入失敗：',
+                                    message
+                                );
 
-                                        this.performMFAVerification(
-                                            responseData
-                                                .user
-                                                .token
-                                        )
-                                        .then(
-                                            resolve
-                                        )
-                                        .catch(
-                                            reject
-                                        );
+                                $notification.post(
+                                    '1min 登入',
+                                    '登入失敗',
+                                    message
+                                );
 
-                                    } else {
-
-                                        console.log(
-                                            '[1min.ai] ❌ 需要 TOTP，但沒有提供金鑰'
-                                        );
-
-                                        notify(
-                                            '1min 登入',
-                                            '需要 TOTP',
-                                            '請在 Plugin 參數中填入 TOTP 金鑰'
-                                        );
-
-                                        reject(
-                                            new Error(
-                                                'Missing TOTP secret'
-                                            )
-                                        );
-                                    }
-
-                                    return;
-                                }
-
-                                /*
-                                 * 儲存 JWT
-                                 */
-                                const token =
-                                    responseData.token ||
-                                    (
-                                        responseData.user &&
-                                        responseData.user.token
-                                    );
-
-                                if (
-                                    token
-                                ) {
-
-                                    saveJWT(
-                                        token,
-                                        responseData.user
-                                    );
-                                }
-
-                                this.displayCreditInfo(
-                                    responseData
-                                )
-                                .then(
-                                    () =>
-                                        resolve(
-                                            responseData
-                                        )
-                                )
-                                .catch(
-                                    reject
+                                reject(
+                                    new Error(
+                                        message
+                                    )
                                 );
 
                                 return;
                             }
 
                             /*
-                             * 登入失敗
+                             * 檢查是否需要 TOTP。
                              */
-                            console.log(
-                                '[1min.ai] ❌ 登入失敗，HTTP：',
-                                status
-                            );
-
-                            let errorMsg =
-                                '登入失敗';
-
                             if (
-                                responseData.message
+                                result.user
+                                    .mfaRequired
                             ) {
 
-                                errorMsg =
-                                    responseData.message;
+                                if (
+                                    !this.totpSecret
+                                ) {
 
-                            } else if (
-                                status ===
-                                401
-                            ) {
+                                    const errorMsg =
+                                        '帳號需要 TOTP，但未提供 TOTP 金鑰';
 
-                                errorMsg =
-                                    '帳號或密碼錯誤';
+                                    console.log(
+                                        `[1min.ai] ❌ ${errorMsg}`
+                                    );
 
-                            } else if (
-                                status ===
-                                429
-                            ) {
+                                    $notification.post(
+                                        '1min 登入',
+                                        '需要 TOTP',
+                                        errorMsg
+                                    );
 
-                                errorMsg =
-                                    '請求過於頻繁，請稍後再試';
+                                    reject(
+                                        new Error(
+                                            errorMsg
+                                        )
+                                    );
+
+                                    return;
+                                }
+
+                                this
+                                    .performMFAVerification(
+                                        result.user.token
+                                    )
+                                    .then(
+                                        resolve
+                                    )
+                                    .catch(
+                                        reject
+                                    );
+
+                                return;
                             }
 
-                            notify(
-                                '1min 登入',
-                                '登入失敗',
-                                errorMsg
+                            const token =
+                                result.token ||
+                                result.user.token;
+
+                            if (
+                                !token
+                            ) {
+
+                                const errorMsg =
+                                    '登入成功但沒有取得 JWT';
+
+                                console.log(
+                                    `[1min.ai] ❌ ${errorMsg}`
+                                );
+
+                                reject(
+                                    new Error(
+                                        errorMsg
+                                    )
+                                );
+
+                                return;
+                            }
+
+                            saveJWT(
+                                token,
+                                result.user
                             );
 
-                            reject(
-                                new Error(
-                                    errorMsg
+                            this
+                                .displayCreditInfo(
+                                    {
+                                        user:
+                                            result.user,
+
+                                        token
+                                    }
                                 )
-                            );
+                                .then(
+                                    () =>
+                                        resolve(
+                                            result
+                                        )
+                                )
+                                .catch(
+                                    reject
+                                );
 
                         } catch (
                             parseError
                         ) {
 
                             console.log(
-                                '[1min.ai] ❌ JSON 解析錯誤：',
-                                String(
-                                    parseError
-                                )
-                            );
-
-                            notify(
-                                '1min 登入',
-                                '回應錯誤',
-                                '伺服器回應格式異常'
+                                '[1min.ai] ❌ JSON 解析失敗：',
+                                String(parseError)
                             );
 
                             reject(
@@ -972,7 +861,7 @@ class LoginManager {
     }
 
     /*
-     * TOTP 驗證
+     * TOTP 驗證。
      */
     async performMFAVerification(
         tempToken
@@ -983,6 +872,7 @@ class LoginManager {
 
         const totp =
             new OTP.TOTP({
+
                 secret:
                     this.totpSecret,
 
@@ -996,14 +886,14 @@ class LoginManager {
                     'SHA1'
             });
 
-        const totpCode =
+        const code =
             totp.generate();
 
         console.log(
             '[1min.ai] 已產生 TOTP 驗證碼'
         );
 
-        const mfaUrl =
+        const url =
             'https://api.1min.ai/auth/mfa/verify';
 
         const headers = {
@@ -1035,8 +925,8 @@ class LoginManager {
 
         const body =
             JSON.stringify({
-                code:
-                    totpCode,
+
+                code,
 
                 token:
                     tempToken
@@ -1050,17 +940,11 @@ class LoginManager {
 
                 $httpClient.post(
                     {
-                        url:
-                            mfaUrl,
+                        url,
 
-                        headers:
-                            headers,
+                        headers,
 
-                        body:
-                            body,
-
-                        'auto-cookie':
-                            false
+                        body
                     },
 
                     (
@@ -1072,116 +956,101 @@ class LoginManager {
                         if (error) {
 
                             console.log(
-                                '[1min.ai] ❌ TOTP 驗證請求失敗：',
-                                String(
-                                    error
-                                )
+                                '[1min.ai] ❌ TOTP 請求失敗：',
+                                String(error)
                             );
 
-                            notify(
-                                '1min 登入',
-                                'TOTP 網路錯誤',
-                                String(
-                                    error
-                                )
-                            );
-
-                            reject(
-                                error
-                            );
+                            reject(error);
 
                             return;
                         }
 
                         try {
 
-                            const responseData =
+                            const result =
                                 JSON.parse(
                                     data ||
                                     '{}'
                                 );
 
-                            const status =
-                                response
-                                    ? Number(
-                                        response.status
-                                    )
-                                    : 0;
-
                             if (
-                                status ===
-                                200
+                                !response ||
+                                response.status !==
+                                    200
                             ) {
 
-                                const token =
-                                    responseData.token ||
-                                    (
-                                        responseData.user &&
-                                        responseData.user.token
-                                    );
+                                const message =
+                                    result.message ||
+                                    `HTTP ${
+                                        response
+                                            ? response.status
+                                            : 'null'
+                                    }`;
 
-                                if (
-                                    token
-                                ) {
+                                console.log(
+                                    '[1min.ai] ❌ TOTP 驗證失敗：',
+                                    message
+                                );
 
-                                    saveJWT(
-                                        token,
-                                        responseData.user
-                                    );
-                                }
+                                $notification.post(
+                                    '1min 登入',
+                                    'TOTP 失敗',
+                                    message
+                                );
 
-                                this.displayCreditInfo(
-                                    responseData
+                                reject(
+                                    new Error(
+                                        message
+                                    )
+                                );
+
+                                return;
+                            }
+
+                            const token =
+                                result.token ||
+                                result.user?.token;
+
+                            if (
+                                !token
+                            ) {
+
+                                throw new Error(
+                                    'TOTP 成功但沒有取得 JWT'
+                                );
+                            }
+
+                            saveJWT(
+                                token,
+                                result.user
+                            );
+
+                            this
+                                .displayCreditInfo(
+                                    {
+                                        user:
+                                            result.user,
+
+                                        token
+                                    }
                                 )
                                 .then(
                                     () =>
                                         resolve(
-                                            responseData
+                                            result
                                         )
                                 )
                                 .catch(
                                     reject
                                 );
 
-                            } else {
-
-                                const errorMsg =
-                                    responseData.message ||
-                                    `HTTP ${status}`;
-
-                                console.log(
-                                    '[1min.ai] ❌ TOTP 驗證失敗：',
-                                    errorMsg
-                                );
-
-                                notify(
-                                    '1min 登入',
-                                    'TOTP 失敗',
-                                    errorMsg
-                                );
-
-                                reject(
-                                    new Error(
-                                        errorMsg
-                                    )
-                                );
-                            }
-
                         } catch (
                             parseError
                         ) {
 
                             console.log(
-                                '[1min.ai] ❌ TOTP 回應解析錯誤：',
-                                String(
-                                    parseError
-                                )
-                            );
-
-                            notify(
-                                '1min 登入',
-                                'TOTP 回應錯誤',
-                                '無法解析驗證回應'
+                                '[1min.ai] ❌ TOTP 回應解析失敗：',
+                                String(parseError)
                             );
 
                             reject(
@@ -1195,7 +1064,7 @@ class LoginManager {
     }
 
     /*
-     * 顯示 Credit 資訊
+     * 顯示 Credit 與每日獎勵。
      */
     async displayCreditInfo(
         responseData
@@ -1214,34 +1083,24 @@ class LoginManager {
                 user.teams.length === 0
             ) {
 
-                console.log(
-                    '[1min.ai] ⚠️ 無法取得 Credit 資訊'
-                );
-
-                notify(
+                $notification.post(
                     '1min 登入',
                     '登入成功',
-                    '歡迎回來！'
+                    '無法取得 Team 資訊'
                 );
 
                 return;
             }
 
-            const authToken =
+            const token =
                 responseData.token ||
-                (
-                    user.token
-                );
-
-            const userUuid =
-                user.uuid;
+                user.token;
 
             let targetTeam =
                 null;
 
             /*
-             * 優先尋找 subscription.userId
-             * 與目前使用者 UUID 相同的 Team。
+             * 優先尋找目前使用者所屬 Team。
              */
             for (
                 const team of
@@ -1249,13 +1108,11 @@ class LoginManager {
             ) {
 
                 const subscriptionUserId =
-                    team.team &&
-                    team.team.subscription &&
-                    team.team.subscription.userId;
+                    team.team?.subscription?.userId;
 
                 if (
                     subscriptionUserId ===
-                    userUuid
+                    user.uuid
                 ) {
 
                     targetTeam =
@@ -1269,67 +1126,37 @@ class LoginManager {
              * 找不到時使用第一個 Team。
              */
             if (
-                !targetTeam &&
-                user.teams.length > 0
+                !targetTeam
             ) {
 
                 targetTeam =
                     user.teams[0];
             }
 
-            if (
-                !targetTeam
-            ) {
-
-                console.log(
-                    '[1min.ai] ❌ 無法找到任何 Team'
-                );
-
-                notify(
-                    '1min 登入',
-                    '登入成功',
-                    '歡迎回來！'
-                );
-
-                return;
-            }
-
-            const teamInfo =
-                targetTeam;
-
             const teamId =
-                teamInfo.teamId ||
-                (
-                    teamInfo.team &&
-                    teamInfo.team.uuid
-                );
+                targetTeam.teamId ||
+                targetTeam.team?.uuid;
 
             const userName =
-                teamInfo.userName ||
-                (
-                    user.email &&
-                    user.email.split('@')[0]
-                ) ||
+                targetTeam.userName ||
+                user.email?.split('@')[0] ||
                 '用戶';
 
             const usedCredit =
                 Number(
-                    teamInfo.usedCredit ||
+                    targetTeam.usedCredit ||
                     0
                 );
 
             const initialCredit =
                 Number(
-                    (
-                        teamInfo.team &&
-                        teamInfo.team.credit
-                    ) ||
+                    targetTeam.team?.credit ||
                     0
                 );
 
             if (
                 !teamId ||
-                !authToken
+                !token
             ) {
 
                 const percent =
@@ -1347,12 +1174,9 @@ class LoginManager {
                 return;
             }
 
-            /*
-             * 檢查每日獎勵
-             */
             await this.checkDailyBonus(
                 teamId,
-                authToken,
+                token,
                 userName,
                 usedCredit,
                 initialCredit
@@ -1361,26 +1185,24 @@ class LoginManager {
         } catch (error) {
 
             console.log(
-                '[1min.ai] ❌ 顯示 Credit 資訊時發生錯誤：',
-                String(
-                    error
-                )
+                '[1min.ai] ❌ Credit 處理失敗：',
+                String(error)
             );
 
-            notify(
+            $notification.post(
                 '1min 登入',
                 '登入成功',
-                '歡迎回來！'
+                'Credit 查詢失敗'
             );
         }
     }
 
     /*
-     * 檢查每日獎勵
+     * 每日獎勵檢查。
      */
     async checkDailyBonus(
         teamId,
-        authToken,
+        token,
         userName,
         usedCredit,
         initialCredit
@@ -1388,23 +1210,20 @@ class LoginManager {
 
         const headers =
             this.buildApiHeaders(
-                authToken
+                token
             );
 
         try {
 
             /*
-             * 第一步：
-             * 呼叫未讀通知 API，
-             * 觸發每日獎勵。
+             * 呼叫未讀通知 API。
              */
             await this.apiCheckNotifications(
                 headers
             );
 
             /*
-             * 第二步：
-             * 取得第一次 Credit。
+             * 第一次取得 Credit。
              */
             const firstCredit =
                 await this.apiGetCredits(
@@ -1412,18 +1231,12 @@ class LoginManager {
                     headers
                 );
 
-            const firstBonus =
-                firstCredit -
-                initialCredit;
-
             console.log(
                 '[1min.ai] 第一次 Credit：',
-                firstCredit,
-                `變化=${firstBonus}`
+                firstCredit
             );
 
             /*
-             * 第三步：
              * 等待三秒。
              */
             await new Promise(
@@ -1435,8 +1248,7 @@ class LoginManager {
             );
 
             /*
-             * 第四步：
-             * 再取得一次 Credit。
+             * 第二次取得 Credit。
              */
             const finalCredit =
                 await this.apiGetCredits(
@@ -1444,7 +1256,7 @@ class LoginManager {
                     headers
                 );
 
-            const totalBonus =
+            const bonus =
                 finalCredit -
                 initialCredit;
 
@@ -1454,29 +1266,30 @@ class LoginManager {
                     usedCredit
                 );
 
-            /*
-             * 顯示最終結果。
-             */
+            console.log(
+                '[1min.ai] 最終 Credit：',
+                finalCredit
+            );
+
+            console.log(
+                '[1min.ai] 今日 Credit 變化：',
+                bonus
+            );
+
             this.showCreditNotification(
                 userName,
                 finalCredit,
                 percent,
-                totalBonus
+                bonus
             );
 
         } catch (error) {
 
             console.log(
                 '[1min.ai] ❌ 每日獎勵檢查失敗：',
-                String(
-                    error
-                )
+                String(error)
             );
 
-            /*
-             * 如果每日獎勵檢查失敗，
-             * 至少顯示目前已知 Credit。
-             */
             const percent =
                 this.calculatePercent(
                     initialCredit,
@@ -1492,7 +1305,7 @@ class LoginManager {
     }
 
     /*
-     * 取得 Credit
+     * 取得 Credit。
      */
     apiGetCredits(
         teamId,
@@ -1505,29 +1318,10 @@ class LoginManager {
                 const url =
                     `https://api.1min.ai/teams/${teamId}/credits`;
 
-                /*
-                 * 這裡的 setTimeout
-                 * 是腳本自己的等待保護，
-                 * 不是 $httpClient 的 timeout 參數。
-                 */
-                const timer =
-                    setTimeout(
-                        () => {
-                            resolve(0);
-                        },
-                        10000
-                    );
-
                 $httpClient.get(
                     {
-                        url:
-                            url,
-
-                        headers:
-                            headers,
-
-                        'auto-cookie':
-                            false
+                        url,
+                        headers
                     },
 
                     (
@@ -1536,16 +1330,11 @@ class LoginManager {
                         data
                     ) => {
 
-                        clearTimeout(
-                            timer
-                        );
-
                         if (
                             error ||
                             !response ||
-                            Number(
-                                response.status
-                            ) !== 200
+                            response.status !==
+                                200
                         ) {
 
                             resolve(0);
@@ -1568,9 +1357,7 @@ class LoginManager {
                                 )
                             );
 
-                        } catch (
-                            error
-                        ) {
+                        } catch (error) {
 
                             resolve(0);
                         }
@@ -1582,8 +1369,6 @@ class LoginManager {
 
     /*
      * 檢查未讀通知。
-     *
-     * 這個 API 用來觸發每日獎勵。
      */
     apiCheckNotifications(
         headers
@@ -1595,24 +1380,10 @@ class LoginManager {
                 const url =
                     'https://api.1min.ai/notifications/unread';
 
-                const timer =
-                    setTimeout(
-                        () => {
-                            resolve();
-                        },
-                        10000
-                    );
-
                 $httpClient.get(
                     {
-                        url:
-                            url,
-
-                        headers:
-                            headers,
-
-                        'auto-cookie':
-                            false
+                        url,
+                        headers
                     },
 
                     (
@@ -1621,15 +1392,9 @@ class LoginManager {
                         data
                     ) => {
 
-                        clearTimeout(
-                            timer
-                        );
-
                         /*
-                         * 原始腳本不要求這個 API
-                         * 一定有特定回應內容。
-                         *
-                         * 因此即使失敗也繼續流程。
+                         * 此 API 即使失敗，
+                         * 也不阻止後面的 Credit 查詢。
                          */
                         resolve();
                     }
@@ -1639,56 +1404,55 @@ class LoginManager {
     }
 
     /*
-     * 數字格式化
+     * 格式化數字。
      */
     formatNumber(
-        num
+        number
     ) {
 
         return Number(
-            num || 0
+            number || 0
         ).toLocaleString(
             'zh-TW'
         );
     }
 
     /*
-     * 計算 Credit 百分比
+     * 計算 Credit 百分比。
      */
     calculatePercent(
-        remainingCredit,
-        usedCredit
+        remaining,
+        used
     ) {
 
-        const remaining =
-            Number(
-                remainingCredit ||
-                0
-            );
-
-        const used =
-            Number(
-                usedCredit ||
-                0
-            );
-
         const total =
-            remaining +
-            used;
+            Number(
+                remaining || 0
+            ) +
+            Number(
+                used || 0
+            );
 
-        return total > 0
-            ? (
-                (
-                    remaining /
-                    total
-                ) *
-                100
-            ).toFixed(1)
-            : 0;
+        if (
+            total <= 0
+        ) {
+
+            return '0.0';
+        }
+
+        return (
+            (
+                Number(
+                    remaining || 0
+                ) /
+                total
+            ) *
+            100
+        ).toFixed(1);
     }
 
     /*
-     * 顯示 Credit 通知
+     * 顯示通知。
      */
     showCreditNotification(
         userName,
@@ -1708,14 +1472,14 @@ class LoginManager {
                 ` (+${this.formatNumber(bonus)})`;
         }
 
-        notify(
-            '1min 登入',
-            '登入成功',
+        console.log(
+            '[1min.ai]',
             message
         );
 
-        console.log(
-            '[1min.ai]',
+        $notification.post(
+            '1min 登入',
+            '登入成功',
             message
         );
     }
@@ -1729,7 +1493,7 @@ class LoginManager {
 
 async function main() {
 
-    const loginManager =
+    const manager =
         new LoginManager(
             email,
             password,
@@ -1737,129 +1501,41 @@ async function main() {
         );
 
     /*
-     * 優先使用已儲存 JWT。
+     * 先嘗試使用已儲存 JWT。
      */
-    const savedData =
+    const saved =
         loadJWT();
 
     if (
-        savedData
+        saved
     ) {
 
         console.log(
-            '[1min.ai] 發現已儲存 JWT，先驗證'
+            '[1min.ai] 發現已儲存 JWT，開始驗證'
         );
 
-        const isValid =
-            await loginManager.validateJWT(
-                savedData.token,
-                savedData.userData
+        const valid =
+            await manager.validateJWT(
+                saved.token,
+                saved.userData
             );
 
         if (
-            isValid
+            valid
         ) {
 
             console.log(
-                '[1min.ai] JWT 有效，不需要重新登入'
+                '[1min.ai] JWT 有效'
             );
 
-            /*
-             * 取得最新 Team / Credit。
-             */
-            const headers =
-                loginManager.buildApiHeaders(
-                    savedData.token
-                );
+            await manager.displayCreditInfo(
+                {
+                    user:
+                        saved.userData,
 
-            const userUuid =
-                savedData.userData.uuid;
-
-            let targetTeam =
-                null;
-
-            const teams =
-                Array.isArray(
-                    savedData.userData.teams
-                )
-                    ? savedData.userData.teams
-                    : [];
-
-            for (
-                const team of
-                    teams
-            ) {
-
-                const subscriptionUserId =
-                    team.team &&
-                    team.team.subscription &&
-                    team.team.subscription.userId;
-
-                if (
-                    subscriptionUserId ===
-                    userUuid
-                ) {
-
-                    targetTeam =
-                        team;
-
-                    break;
+                    token:
+                        saved.token
                 }
-            }
-
-            if (
-                !targetTeam &&
-                teams.length > 0
-            ) {
-
-                targetTeam =
-                    teams[0];
-            }
-
-            if (
-                targetTeam
-            ) {
-
-                const teamId =
-                    targetTeam.teamId ||
-                    (
-                        targetTeam.team &&
-                        targetTeam.team.uuid
-                    );
-
-                const currentCredit =
-                    await loginManager.apiGetCredits(
-                        teamId,
-                        headers
-                    );
-
-                if (
-                    currentCredit > 0 &&
-                    targetTeam.team
-                ) {
-
-                    targetTeam.team.credit =
-                        currentCredit;
-                }
-            }
-
-            /*
-             * 建立與登入回應相同的資料格式。
-             */
-            const responseData = {
-
-                user:
-                    savedData.userData,
-
-                token:
-                    savedData.token
-            };
-
-            /*
-             * 執行每日獎勵。
-             */
-            await loginManager.displayCreditInfo(
-                responseData
             );
 
             $done();
@@ -1867,11 +1543,8 @@ async function main() {
             return;
         }
 
-        /*
-         * JWT 已失效。
-         */
         console.log(
-            '[1min.ai] 儲存的 JWT 已失效，清除後重新登入'
+            '[1min.ai] JWT 已失效，重新登入'
         );
 
         clearJWT();
@@ -1883,12 +1556,12 @@ async function main() {
      */
     try {
 
-        await loginManager.performLogin();
+        await manager.performLogin();
 
     } catch (error) {
 
         console.log(
-            '[1min.ai] ❌ 登入失敗：',
+            '[1min.ai] ❌ 執行失敗：',
             String(
                 error &&
                 error.message
@@ -1903,7 +1576,4 @@ async function main() {
     }
 }
 
-/*
- * 開始執行
- */
 main();
