@@ -9,7 +9,7 @@
 TOTP金鑰 = input,"null"
 
 [Script]
-cron "0 20 23 * * *" script-path=https://raw.githubusercontent.com/zeroffa/Surge/master/JS/1min_argument_test.js,argument="email=${帳號}&password=${密碼}&totp=${TOTP金鑰}",tag=1min.ai參數測試,timeout=30
+cron "0 20 23 * * *" script-path=https://github.com/zeroffa/Surge/raw/refs/heads/master/ln/1min_argument_test.js,argument="email=${帳號}&password=${密碼}&totp=${TOTP金鑰}",tag=1min.ai參數測試,timeout=30
 
 [MITM]
 hostname = api.1min.ai
