@@ -4,7 +4,7 @@
 #!category=Automation
 
 [Script]
-cron "0 31 23 * * *" script-path=https://raw.githubusercontent.com/zeroffa/Surge/master/JS/1min_argument_test.js,tag=1min.ai參數測試,timeout=30,argument="email=TEST_EMAIL&password=TEST_PASSWORD&totp=null",enable=true
+cron "0 31 23 * * *" script-path=https://github.com/zeroffa/Surge/raw/refs/heads/master/ln/1min-login.js,tag=1min.ai參數測試,timeout=30,argument="email=TEST_EMAIL&password=TEST_PASSWORD&totp=null",enable=true
 
 [MITM]
 hostname = api.1min.ai
