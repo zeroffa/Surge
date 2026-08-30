@@ -1,5 +1,5 @@
 #!name=1min.ai 自動登入 REF.7a6163
-#!desc=每日自動登入 1min.ai 帳號，支援可選 TOTP。v20260830.01
+#!desc=每日自動登入 1min.ai 帳號，支援可選 TOTP。v20260830.02
 #!system=ios
 #!category=Automation
 
@@ -10,7 +10,7 @@ Cron = input,"10 16 * * *"
 TOTP金鑰 = input,"null"
 
 [Script]
-cron {Cron} script-path=https://github.com/zeroffa/Surge/raw/refs/heads/master/ln/1min-login.js,tag=1min.ai 登入
+cron {Cron} script-path=https://github.com/zeroffa/Surge/raw/refs/heads/master/ln/1min-login.js,argument={Cron,帳號,密碼,TOTP金鑰},tag=1min.ai 登入
 
 [MITM]
 hostname = api.1min.ai
