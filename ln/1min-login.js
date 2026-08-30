@@ -1,16 +1,16 @@
 /*
- * Loon 3.5.0 參數測試
+ * 1min.ai Loon argument 測試
  *
- * v20260830.04
+ * 版本：v20260830.04
+ * 適用：Loon 3.5.0 (975)
  *
- * 用途：
- * 確認舊版 Plugin [Argument]
- * 是否可以透過 ${參數} 展開後
- * 傳入 script 的 argument。
+ * 目的：
+ * 確認舊版 Script 的 argument
+ * 是否能正常傳入 $argument。
  */
 
 console.log(
-    '[1min.ai TEST] v20260830.04'
+    '[1min.ai TEST] JS v20260830.04'
 );
 
 console.log(
@@ -20,7 +20,7 @@ console.log(
 
 console.log(
     '[1min.ai TEST] $argument =',
-    $argument
+    String($argument)
 );
 
 $notification.post(
