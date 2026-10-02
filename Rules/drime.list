@@ -1,0 +1,5 @@
+#!name=Drime DOMAIN 
+#!desc=Drime網域 v20261002.01
+
+  DOMAIN-SUFFIX,app.drime.cloud
+DOMAIN-KEYWORD,drimestorage
