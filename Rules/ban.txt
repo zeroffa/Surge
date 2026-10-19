@@ -1,5 +1,5 @@
 #!name=BAN SITE LISTS
-#!desc=禁止連線網站列表 v20260822.01
+#!desc=禁止連線網站列表 v20261020.01
 
 #! line
 #! DOMAIN-SUFFIX,lan.line.me
@@ -136,10 +136,10 @@ DOMAIN-SUFFIX,adtago.s3.amazonaws.com
 
 #! 蝦皮
 #! ===== Shopee Tracking / Analytics =====
-DOMAIN-SUFFIX,apm.tracking.shopee.tw
+#! DOMAIN-SUFFIX,apm.tracking.shopee.tw
 DOMAIN-SUFFIX,ubt.tracking.shopee.tw
 DOMAIN-SUFFIX,ubta.tracking.shopee.tw
-DOMAIN-SUFFIX,live-apm.shopee.tw
+#! DOMAIN-SUFFIX,live-apm.shopee.tw
 DOMAIN-SUFFIX,ccms.shopee.io
 DOMAIN-SUFFIX,deo.shopeemobile.com
 DOMAIN-SUFFIX,patronus.idata.shopeemobile.com
