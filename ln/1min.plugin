@@ -1,9 +1,13 @@
-#!name=抓1min.ai 登入 token
-#!desc=抓1min.ai 登入 token Loon 格式。
-
+#!name = 1min.ai Token 擷取
+#!desc = 自動攔截 1min.ai API 登入請求，擷取並儲存 JWT Token 與 Team ID
+#!author = ChatGPT
+#!loon_version = 3.5.0(969)
+#!date = 2026-11-02
+#!tag = Automation
+#!type = normal
 
 [Script]
-http-request ^https:\/\/api\.1min\.ai\/ script-path=https://raw.githubusercontent.com/zeroffa/Surge/refs/heads/master/JS/1min-login-v20261102.01.js,requires-body=0,timeout=10,tag=1min.ai Token 擷取
+http-request ^https:\/\/api\.1min\.ai\/ script-path=https://raw.githubusercontent.com/zeroffa/Surge/refs/heads/master/JS/1min-login-v20261102.01.js,requires-body=false,timeout=10,enable=true
 
-[MITM]
+[Mitm]
 hostname = %APPEND% api.1min.ai
