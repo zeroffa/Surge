@@ -3,7 +3,7 @@
 
 
 [Script]
-http-request ^https:\/\/api\.1min\.ai\/ script-path=1min-login.js,requires-body=0,timeout=10,tag=1min.ai Token 擷取
+http-request ^https:\/\/api\.1min\.ai\/ script-path=1min-login-v20261102.01,requires-body=0,timeout=10,tag=1min.ai Token 擷取
 
 [MITM]
 hostname = %APPEND% api.1min.ai
