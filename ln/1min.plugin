@@ -1,13 +1,9 @@
 #!name = 1min.ai Token 擷取
-#!desc = 自動攔截 1min.ai API 登入請求，擷取並儲存 JWT Token 與 Team ID
-#!author = ChatGPT
-#!loon_version = 3.5.0(969)
-#!date = 2026-11-02
-#!tag = Automation
-#!type = normal
+#!desc = Safari 登入 1min.ai 時自動擷取 JWT Token 與 Team ID
+#!loon_version = 3.5.1(983)
 
 [Script]
-http-request ^https:\/\/api\.1min\.ai\/ script-path=https://raw.githubusercontent.com/zeroffa/Surge/refs/heads/master/JS/1min-login-v20261102.01.js,requires-body=false,timeout=10,enable=true
+request if ${url} ~= /^https:\/\/api\.1min\.ai\// then script("https://raw.githubusercontent.com/7a6163/Surge/main/Script/1min-login.js?v=v202611021524") with requires_body=false, timeout=10
 
 [Mitm]
 hostname = %APPEND% api.1min.ai
