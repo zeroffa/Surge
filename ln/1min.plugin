@@ -1,6 +1,5 @@
 #!name = 1min.ai Token 擷取
 #!desc = Safari 登入 1min.ai 時自動擷取 JWT Token 與 Team ID
-#!loon_version = 3.5.1(983)
 
 [Script]
 request if ${url} ~= /^https:\/\/api\.1min\.ai\// then script("https://raw.githubusercontent.com/7a6163/Surge/main/Script/1min-login.js?v=v202611021524") with requires_body=false, timeout=10
