@@ -1,8 +1,9 @@
 #!name = 1min.ai Token 擷取
-#!desc = 自動擷取 1min.ai 登入 Token 與 Team ID
+#!desc = Safari 登入 1min.ai 時自動擷取 JWT Token 與 Team ID
+
 
 [Script]
-request if ${url} ~= /^https:\/\/api\.1min\.ai\// && ${request.header['x-auth-token']} != null then script("https://raw.githubusercontent.com/7a6163/Surge/main/Script/1min-login.js?v=v202611021524") with requires_body=false, timeout=20, debug=true
+request if ${url} ~= /^https:\/\/api\.1min\.ai\// then script("https://raw.githubusercontent.com/7a6163/Surge/main/Script/1min-login.js?v=v202611021524") with tag="1min.ai Token 擷取", timeout=20, requires_body=false, debug=true
 
 [Mitm]
 hostname = %APPEND% api.1min.ai
